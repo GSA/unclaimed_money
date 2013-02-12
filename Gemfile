@@ -5,10 +5,10 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'json', '1.7.7'
 gem 'mysql2'
 gem 'httparty'
 gem 'nokogiri'
-gem 'backbone-on-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
