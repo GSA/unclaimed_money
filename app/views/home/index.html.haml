@@ -1,6 +1,8 @@
-%h3
-  Enter your name to search for unclaimed funds
-%div.search_form
-  = form_tag "/search" do
-    = label_tag "last_name", "Last name"
-    = text_field_tag "last_name"
+.row
+  .ten.columns
+    %h3
+      Enter your name to search for unclaimed funds
+    %div.search_form
+      = form_tag "/search" do
+        = label_tag "last_name", "Last name"
+        = text_field_tag "last_name"

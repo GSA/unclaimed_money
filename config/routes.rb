@@ -1,6 +1,5 @@
 UnclaimedMoney::Application.routes.draw do
   post 'search' => "home#search"
-  get 'fdic_search' => "home#fdic_search"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

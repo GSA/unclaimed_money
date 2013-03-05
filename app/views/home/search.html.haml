@@ -1,8 +1,86 @@
-%h3
-  Search Results
-%p
-  Here are the results for your search for '
-  %b
-    %i
-      = params[:last_name]
-  '
+.row
+  .ten.columns
+    %h3
+      Search Results
+.row
+  .twelve.columns
+    - if @has_results
+      %dl.tabs
+        %dd.active
+          = link_to "FDIC (#{@fdic_search[:total]})", "#fdic"
+        %dd
+          = link_to "PBGC (#{@pbgc_search[:total]})", "#pbgc"
+        %dd
+          = link_to "HUD (#{@hud_search[:total]})", "#hud"
+      %ul.tabs-content
+        %li.active#fdicTab
+          %table.twelve
+            %thead
+              %tr
+                %th
+                  Reference #
+                %th
+                  Fund Owner Name
+                %th
+                  Institution Name
+                %th
+                  Location
+                %th
+                  Claim #
+                %th
+                  Check Date
+                %th
+                  Check #
+            %tbody
+              - @fdic_search[:results].each do |result|
+                %tr
+                  %td= result[:reference_number]
+                  %td= result[:fund_owner_name]
+                  %td= result[:instituion_name]
+                  %td= "#{result[:city]}, #{result[:state]}"
+                  %td= result[:claim_number]
+                  %td= result[:check_date]
+                  %td= result[:check_number]
+        %li#pbgcTab
+          %table.twelve
+            %thead
+              %tr
+                %th
+                  Name
+                %th
+                  Company Name
+                %th
+                  Last known address
+            %tbody
+              - @pbgc_search[:results].each do |result|
+                %tr
+                  %td= result[:name]
+                  %td= result[:company_name]
+                  %td= result[:last_known_address]
+        %li#hudTab
+          %table.twelve
+            %thead
+              %tr
+                %th
+                  Name
+                %th
+                  Address
+                %th
+                  Claim date
+                %th
+                  Case number
+            %tbody
+              - @hud_search[:results].each do |result|
+                %tr
+                  %td= result[:name]
+                  %td= "#{result[:address]} #{result[:city]}, #{result[:state]} #{result[:zip]}"
+                  %td= result[:claim_date]
+                  %td= result[:case_number]
+    - else
+      %p
+        No results for '
+        %b
+          = params[:last_name]
+        '.
+        = link_to 'Try another search?', root_path
+  

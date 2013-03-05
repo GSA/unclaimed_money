@@ -6,11 +6,10 @@ class FdicSearch
     response = HTTParty.post("http://www2.fdic.gov/funds/unclaimresponse.asp", {:body => DEFAULT_PARAMS.merge(:SrchName => last_name)})
     if response.code == 200
       if response.body =~ /No Records Found/
-        return {:results => [], :total => 0}
-      else
-        doc = Nokogiri::HTML(response.body)
-        counter = 0
         results = []
+      else
+        results = []
+        doc = Nokogiri::HTML(response.body)
         doc.xpath("//tr[@align='center']").each_with_index do |result, index|
           if index == 0
             next
