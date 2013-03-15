@@ -6,7 +6,6 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'json', '1.7.7'
-gem 'mysql2'
 gem 'httparty'
 gem 'nokogiri'
 
@@ -27,10 +26,15 @@ group :development, :test do
 end
 
 group :development do
+  gem 'mysql2'
   gem 'haml-rails'
   gem 'quiet_assets' 
   gem 'hpricot'
   gem 'ruby_parser' 
+end
+
+group :production do
+  gem 'pg'
 end
 
 group :test do
