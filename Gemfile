@@ -8,6 +8,7 @@ gem 'rails', '3.2.11'
 gem 'json', '1.7.7'
 gem 'httparty'
 gem 'nokogiri'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,7 +28,6 @@ end
 
 group :development do
   gem 'mysql2'
-  gem 'haml-rails'
   gem 'quiet_assets' 
   gem 'hpricot'
   gem 'ruby_parser' 
