@@ -1,15 +1,24 @@
-!!!
-%html
-  %head
-    %title Unclaimed Money
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-  %body
-    .row
-      .twelve.columns
-        %h1
-          = link_to 'Unclaimed Money', root_path
-        %p
-          Does the government owe you money?  Search once and find out!
-    = yield
+!!! 5
+/ http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7] <html lang="en" class="no-js ie6">
+/[if IE 7 ]    <html lang="en" class="no-js ie7">
+/[if IE 8 ]    <html lang="en" class="no-js ie8">
+/[if IE 9 ]    <html lang="en" class="no-js ie9">
+/[if (gt IE 9)|!(IE)] <!--> <html lang=\"en\">
+
+%head
+  %meta{ charset: "utf-8" }
+  %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+  %title Unclaimed Money
+  = stylesheet_link_tag    "application", :media => "all"
+  = javascript_include_tag "vendor/custom.modernizr"
+  = csrf_meta_tags
+%body
+  .row
+    .large-12.columns
+      %h1
+        = link_to 'Unclaimed Money', root_path
+      %p
+        Does the government owe you money?  Search once and find out!
+  = yield
+  = javascript_include_tag "application"

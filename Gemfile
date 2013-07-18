@@ -20,6 +20,8 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass-rails' # you need this or you get an err
+  gem 'zurb-foundation', '~> 4.0.0'
 end
 
 group :development, :test do
@@ -28,9 +30,9 @@ end
 
 group :development do
   gem 'mysql2'
-  gem 'quiet_assets' 
+  gem 'quiet_assets'
   gem 'hpricot'
-  gem 'ruby_parser' 
+  gem 'ruby_parser'
 end
 
 group :production do
