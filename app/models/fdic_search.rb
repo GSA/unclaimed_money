@@ -16,7 +16,7 @@ class FdicSearch
           else 
             row = {}
             result.xpath("td/font").each_with_index do |column, index|
-              row.merge!(FIELDS[index].to_sym => column.text.strip)
+              row.merge!(FIELDS[index].to_sym => column.text.strip == '0' ? '' : column.text.strip)
             end
             results << row
           end

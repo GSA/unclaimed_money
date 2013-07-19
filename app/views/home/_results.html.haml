@@ -68,6 +68,6 @@
           - @hud_search[:results].each do |result|
             %tr
               %td= result[:name]
-              %td= "#{result[:address]} #{result[:city]}, #{result[:state]} #{result[:zip]}"
+              %td= "#{result[:address]} #{result[:city] == ' ' ? '' : result[:city] + ', ' }#{result[:state]} #{result[:zip]}"
               %td= result[:claim_date]
               %td= result[:case_number]
