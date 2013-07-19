@@ -6,3 +6,10 @@
       = form_tag "/search" do
         = label_tag "last_name", "Last name"
         = text_field_tag "last_name"
+
+%div#searchModal.reveal-modal.expand
+  %h4
+    Search in progress...
+  %div#progressbar
+    %div#progress
+      %div#pbaranim
