@@ -30,13 +30,23 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.2)
     arel (3.0.2)
+    awesome_print (1.1.0)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bourne (1.1.2)
-      mocha (= 0.10.5)
+    brakeman (2.0.0)
+      erubis (~> 2.6)
+      fastercsv (~> 1.5)
+      haml (>= 3.0, < 5.0)
+      highline (~> 1.6.19)
+      multi_json (~> 1.2)
+      ruby2ruby (~> 2.0.5)
+      ruby_parser (~> 3.1.1)
+      sass (~> 3.0)
+      slim (~> 1.3.6)
+      terminal-table (~> 1.4)
     builder (3.0.4)
     callsite (0.0.11)
     capybara (2.0.2)
@@ -46,6 +56,9 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 1.0.0)
+    capybara-webkit (1.0.0)
+      capybara (~> 2.0, >= 2.0.2)
+      json
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     chunky_png (1.2.8)
@@ -64,22 +77,51 @@ GEM
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
     crack (0.3.2)
+    daemons (1.1.9)
     database_cleaner (0.9.1)
     debug_inspector (0.0.2)
     diff-lcs (1.1.3)
+    em-websocket (0.5.0)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.5.3)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
+    fastercsv (1.5.5)
     ffi (1.3.1)
+    formatador (0.2.4)
     fssm (0.2.10)
+    guard (1.8.1)
+      formatador (>= 0.2.4)
+      listen (>= 1.0.0)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      thor (>= 0.14.6)
+    guard-livereload (1.4.0)
+      em-websocket (>= 0.5.0)
+      guard (>= 1.8.0)
+      multi_json (~> 1.7)
+    guard-rspec (2.5.4)
+      guard (>= 1.1)
+      rspec (~> 2.11)
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
       activesupport (>= 3.1, < 4.1)
       haml (~> 3.1)
       railties (>= 3.1, < 4.1)
+    highline (1.6.19)
     hike (1.2.2)
     hpricot (0.8.6)
+    http_parser.rb (0.5.3)
     httparty (0.10.0)
       multi_json (~> 1.0)
       multi_xml
@@ -94,6 +136,11 @@ GEM
     libwebsocket (0.1.7.1)
       addressable
       websocket
+    listen (1.2.2)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      rb-kqueue (>= 0.2)
+    lumberjack (1.0.4)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -109,13 +156,19 @@ GEM
     multi_json (1.7.5)
     multi_xml (0.5.2)
     mysql2 (0.3.11)
+    net-http-spy (0.2.1)
     nokogiri (1.5.6)
+    parallel (0.7.1)
+    parallel_tests (0.15.0)
+      parallel
     pg (0.14.1)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-nav (0.2.3)
+      pry (~> 0.9.10)
     quiet_assets (1.0.1)
       railties (~> 3.1)
     rack (1.4.5)
@@ -143,8 +196,17 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.4)
+    rb-fsevent (0.9.3)
+    rb-inotify (0.9.0)
+      ffi (>= 0.5.0)
+    rb-kqueue (0.2.0)
+      ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rspec (2.12.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
     rspec-core (2.12.2)
     rspec-expectations (2.12.1)
       diff-lcs (~> 1.1.3)
@@ -156,6 +218,9 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
+    ruby2ruby (2.0.6)
+      ruby_parser (~> 3.1)
+      sexp_processor (~> 4.0)
     ruby_parser (3.1.1)
       sexp_processor (~> 4.1)
     rubyzip (0.9.9)
@@ -170,19 +235,31 @@ GEM
       multi_json (~> 1.0)
       rubyzip
     sexp_processor (4.1.3)
-    shoulda-matchers (1.4.2)
+    shoulda (3.5.0)
+      shoulda-context (~> 1.0, >= 1.0.1)
+      shoulda-matchers (>= 1.4.1, < 3.0)
+    shoulda-context (1.1.4)
+    shoulda-matchers (2.2.0)
       activesupport (>= 3.0.0)
-      bourne (~> 1.1.2)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    slim (1.3.9)
+      temple (~> 0.6.3)
+      tilt (~> 1.3, >= 1.3.3)
     slop (3.4.5)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    temple (0.6.5)
+    terminal-table (1.4.5)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
     treetop (1.4.12)
@@ -198,6 +275,11 @@ GEM
     websocket (1.0.6)
     xpath (1.0.0)
       nokogiri (~> 1.3)
+    zeus (0.13.3)
+      method_source (>= 0.6.7)
+    zeus-parallel_tests (0.2.4)
+      parallel_tests (>= 0.11.3)
+      zeus (~> 0.13.3)
     zurb-foundation (4.0.9)
       sass (>= 3.2.0)
 
@@ -205,12 +287,20 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   better_errors
   binding_of_caller
+  brakeman
   capybara
+  capybara-webkit
   coffee-rails (~> 3.2.1)
   compass-rails
   database_cleaner
+  factory_girl_rails
+  faker
+  guard
+  guard-livereload
+  guard-rspec
   haml-rails
   hpricot
   httparty
@@ -218,17 +308,23 @@ DEPENDENCIES
   json (= 1.7.7)
   launchy
   meta_request
+  mocha
   mysql2
+  net-http-spy
   nokogiri
+  parallel_tests
   pg
   pry
+  pry-nav
   quiet_assets
   rails (= 3.2.13)
   rspec-rails
   ruby_parser
   sass-rails (~> 3.2.3)
-  shoulda-matchers
+  shoulda
   simplecov
+  thin
   uglifier (>= 1.0.3)
   webmock
+  zeus-parallel_tests
   zurb-foundation (~> 4.0.0)

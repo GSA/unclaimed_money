@@ -15,9 +15,9 @@ class HudSearch
             next
           else
             result = {}
-            result[:name] = row.xpath("td").first.xpath("font").text.strip.squish
-            result[:address] = row.xpath("td")[1].xpath("font").inner_html.split("<br>").first
-            result[:city] = row.xpath("td")[1].xpath("font").inner_html.split("<br>").last
+            result[:name] = row.xpath("td").first.xpath("font").text.strip.squish.titleize
+            result[:address] = row.xpath("td")[1].xpath("font").inner_html.split("<br>").first.titleize
+            result[:city] = row.xpath("td")[1].xpath("font").inner_html.split("<br>").last.titleize
             result[:case_number] = row.xpath("td")[2].xpath("font").inner_html.split("<br>").first
             result[:state] = row.xpath("td")[2].xpath("font").inner_html.split("<br>").last.split(" ").first
             result[:zip] = row.xpath("td")[2].xpath("font").inner_html.split("<br>").last.split(" ").last
@@ -29,6 +29,9 @@ class HudSearch
       end
       return {:results => results, :total => results.size}
     end
+    rescue
+      return {:results => [], :total => 0}
+    
   end
 end
 

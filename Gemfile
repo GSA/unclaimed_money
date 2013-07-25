@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
+gem 'capybara'
+gem "capybara-webkit"
 gem 'json', '1.7.7'
 gem 'haml-rails'
 gem 'httparty'
@@ -19,18 +21,31 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'awesome_print'
+  gem "brakeman", :require => false
+  gem 'faker'
+  gem 'factory_girl_rails'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'mocha', require: 'mocha/api'
+  gem 'net-http-spy'
+  gem "parallel_tests"
   gem 'pry'
+  gem 'pry-nav'
   gem 'rspec-rails'
+  gem "zeus-parallel_tests"
 end
 
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'guard-livereload'
   gem 'hpricot'
   gem 'meta_request'
   gem 'mysql2'
   gem 'quiet_assets'
   gem 'ruby_parser'
+  gem 'thin'
 end
 
 group :production do
@@ -38,10 +53,9 @@ group :production do
 end
 
 group :test do
-  gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'shoulda-matchers'
+  gem 'shoulda'
   gem 'simplecov', :require => false
   gem 'webmock'
 end

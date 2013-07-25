@@ -15,9 +15,9 @@ class PbgcSearch
             next
           else
             result = {}
-            result[:name] = row.xpath("th/a").text
+            result[:name] = row.xpath("th/a").text.titleize
             result[:claim_url] = row.xpath("th/a").attribute("href").value
-            result[:company] = row.xpath("td").first.text.strip
+            result[:company] = row.xpath("td").first.text.strip.titleize
             result[:last_known_address] = row.xpath("td").last.text.strip
             results << result
           end
@@ -25,6 +25,9 @@ class PbgcSearch
       end
       return {:results => results, :total => results.size}
     end
+    rescue
+      return {:results => [], :total => 0}
+    
   end
 end
 

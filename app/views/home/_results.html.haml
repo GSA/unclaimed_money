@@ -71,3 +71,46 @@
               %td= "#{result[:address]} #{result[:city] == ' ' ? '' : result[:city] + ', ' }#{result[:state]} #{result[:zip]}"
               %td= result[:claim_date]
               %td= result[:case_number]
+  - unless @ca_search.nil?
+    %section
+      %p.title{ data: { 'section-title' => true } }
+        = link_to "CA Unclaimed Property (#{@ca_search.total})", "#"
+      %div.content{ data: { 'section-content' => true } }
+        %table.large-12
+          %thead
+            %tr
+              %th
+                Name
+              %th
+                Address
+              %th
+                ID Number
+              %th
+                Type
+          %tbody
+            - @ca_search.results.each do |result|
+              %tr
+                %td= result[:name]
+                %td= "#{result[:address]}, #{result[:city_state_zip]}"
+                %td= raw result[:id]
+                %td= ca_result_type(result[:type])
+  - unless @md_search.nil?
+    %section
+      %p.title{ data: { 'section-title' => true } }
+        = link_to "MD Unclaimed Property (#{@md_search.total})", "#"
+      %div.content{ data: { 'section-content' => true } }
+        %table.large-12
+          %thead
+            %tr
+              %th
+                Claim
+              %th
+                Name
+              %th
+                Address
+          %tbody
+            - @md_search.results.each do |result|
+              %tr
+                %td= result[:claim]
+                %td= result[:name]
+                %td= result[:address]

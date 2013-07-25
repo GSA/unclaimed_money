@@ -16,7 +16,7 @@ class FdicSearch
           else 
             row = {}
             result.xpath("td/font").each_with_index do |column, index|
-              row.merge!(FIELDS[index].to_sym => column.text.strip == '0' ? '' : column.text.strip)
+              row.merge!(FIELDS[index].to_sym => column.text.strip.titleize == '0' ? '' : column.text.strip.titleize)
             end
             results << row
           end
@@ -24,6 +24,8 @@ class FdicSearch
       end
     end
     return {:results => results, :total => results.size}
+  rescue
+    return {:results => [], :total => 0}
   end
 end
 
