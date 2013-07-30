@@ -10,5 +10,5 @@ module HomeHelper
       content_tag :span, 'I', class: "has-tip tip-left", title: "These are properties that the business is required to transfer to the State because the owner did not contact the business to recover the property or reactivate the account within the required timeframe. These properties are currently unavailable to be claimed as they are in the process of transferring to the State. When the property is available to be claimed, the 'I' will be replaced with a 'P'. Click on the 'Details' link in the ID Number column to find out more about the 'Interim Details' property.", "data-tooltip" => true, "data-width" => 300
     end
   end
-  
+
 end

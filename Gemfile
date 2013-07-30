@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 ruby "1.9.3"
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 
 gem 'capybara'
 gem "capybara-webkit"
 gem 'json', '1.7.7'
 gem 'haml-rails'
 gem 'httparty'
+gem 'Indirizzo'
 gem 'jquery-rails'
 gem 'nokogiri'
 

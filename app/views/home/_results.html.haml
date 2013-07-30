@@ -25,7 +25,7 @@
             %tr
               %td= result[:reference_number]
               %td= result[:fund_owner_name]
-              %td= result[:instituion_name]
+              %td= result[:institution_name]
               %td= "#{result[:city]}, #{result[:state]}"
               %td= result[:claim_number]
               %td= result[:check_date]
@@ -47,7 +47,7 @@
           - @pbgc_search[:results].each do |result|
             %tr
               %td= result[:name]
-              %td= result[:company_name]
+              %td= result[:company]
               %td= result[:last_known_address]
   %section
     %p.title{ data: { 'section-title' => true } }
@@ -91,7 +91,7 @@
             - @ca_search.results.each do |result|
               %tr
                 %td= result[:name]
-                %td= "#{result[:address]}, #{result[:city_state_zip]}"
+                %td= result[:address]
                 %td= raw result[:id]
                 %td= ca_result_type(result[:type])
   - unless @md_search.nil?

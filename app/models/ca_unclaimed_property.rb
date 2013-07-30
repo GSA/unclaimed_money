@@ -6,7 +6,7 @@ class CaUnclaimedProperty
   def initialize(last_name, options = {})
     Capybara.run_server = false
     Capybara.current_driver = :webkit
-    Capybara.app_host = "https://scoweb.sco.ca.gov/UCP/Default.aspx"
+    Capybara.app_host = "https://scoweb.sco.ca.gov"
 
     visit('/UCP/Default.aspx')
     fill_in 'ctl00$ContentPlaceHolder1$txtLastName', :with => last_name
@@ -26,8 +26,7 @@ class CaUnclaimedProperty
         rows.map do |row|
           result = {}
           result[:name] = get_name(row)
-          result[:address] = get_address(row)
-          result[:city_state_zip] = get_city_state_zip(row)
+          result[:address] = AddressCleaner.parse("#{get_address(row)} #{get_city_state_zip(row)}")
           result[:id] = get_id(row)
           result[:type] = get_type(row)
 
@@ -60,28 +59,12 @@ class CaUnclaimedProperty
 
   def get_address(row)
     return nil unless row
-    row.css('td')[1].text.strip.squish.titleize.gsub('Po Box', 'PO Box')
+    row.css('td')[1].text.strip.squish
   end
 
   def get_city_state_zip(row)
     return nil unless row.css('td')[2]
     row.css('td')[2].inner_html.squish
-  end
-  
-  def get_city_state_zip2(row)
-    state_codes = ["AA", "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
-    
-    city_items = row.css('td')[2].text.split
-    
-    size = city_items.count
-    case
-    when size > 2
-      city_info = "#{city_items[0..(size-3)]}, #{city_items[size-2]} #{city_items[size-1]}"
-    when size == 2
-      city_info = "#{city_items[0]}, #{city_items[1]}"
-    else size < 2
-      city_info = "#{city_items[0]}"
-    end
   end
 
   def get_id(row)

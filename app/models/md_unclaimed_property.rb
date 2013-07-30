@@ -25,6 +25,8 @@ class MdUnclaimedProperty < ActiveRecord::Base
         @results = []
 
         rows.map do |row|
+          next unless row.css('td').count == 5
+          
           result = {}
           result[:claim] = get_claim(row)
           result[:name] = get_name(row)
@@ -56,7 +58,7 @@ class MdUnclaimedProperty < ActiveRecord::Base
 
   def get_address(row)
     return nil unless row
-    row.css('td')[4].text.strip.squish.titleize.gsub('Po Box', 'PO Box')
+    row.css('td')[4].text.strip.squish.titleize
   end
 
 end

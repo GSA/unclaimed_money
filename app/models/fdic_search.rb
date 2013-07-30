@@ -15,9 +15,16 @@ class FdicSearch
             next
           else 
             row = {}
-            result.xpath("td/font").each_with_index do |column, index|
-              row.merge!(FIELDS[index].to_sym => column.text.strip.titleize == '0' ? '' : column.text.strip.titleize)
-            end
+
+            row[:reference_number] = result.xpath("td/font")[0].text.squish.titleize
+            row[:fund_owner_name] = result.xpath("td/font")[1].text.squish.titleize
+            row[:institution_name] = result.xpath("td/font")[2].text.squish.titleize
+            row[:city] = result.xpath("td/font")[3].text.squish.titleize
+            row[:state] = result.xpath("td/font")[4].text.squish
+            row[:claim_number] = result.xpath("td/font")[5].text.squish.titleize
+            row[:check_date] = result.xpath("td/font")[6].text.squish.titleize
+            row[:check_number] = result.xpath("td/font")[7].text.squish.titleize
+
             results << row
           end
         end
