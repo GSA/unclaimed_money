@@ -1,8 +1,7 @@
-class MdUnclaimedProperty < ActiveRecord::Base
+class MdUnclaimedProperty
   include Capybara::DSL
-
   attr_reader :results, :total
-
+  
   def initialize(last_name, options = {})
     Capybara.run_server = false
     Capybara.current_driver = :webkit
@@ -17,13 +16,14 @@ class MdUnclaimedProperty < ActiveRecord::Base
     if page.status_code == 200
       # need to change this for MD
       if page.text.include? "Your search has returned no matching records at this time"
-        results = []
+        @results = []
+        @total = 0
       else
         doc = Nokogiri::HTML(page.body)
         rows = doc.css('#dgUnclaimedPR tbody tr')[1..25]
 
         @results = []
-
+                
         rows.map do |row|
           next unless row.css('td').count == 5
           
@@ -35,12 +35,9 @@ class MdUnclaimedProperty < ActiveRecord::Base
           @results << result
           @total = @results.count
         end
-
       end # end if first(...)
-#      return {:results => results, :total => results.size}
     end # end if page.status.code == 200
-  end # end self.search_for  
-  
+  end
   
   def get_claim(row)
     return nil unless row

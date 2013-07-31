@@ -1,6 +1,5 @@
 class CaUnclaimedProperty
   include Capybara::DSL
-
   attr_reader :results, :total
   
   def initialize(last_name, options = {})
@@ -16,7 +15,8 @@ class CaUnclaimedProperty
     
     if page.status_code == 200
       if first('td.dkBlueBarHeader14px').text == "UNCLAIMED PROPERTY SEARCH RESULTS NO MATCH"
-        results = []
+        @results = []
+        @total = 0
       else
         doc = Nokogiri::HTML(page.body)
         rows = doc.css('#ctl00_ContentPlaceHolder1_gvResults tr')[1..25]
@@ -26,7 +26,7 @@ class CaUnclaimedProperty
         rows.map do |row|
           result = {}
           result[:name] = get_name(row)
-          result[:address] = AddressCleaner.parse("#{get_address(row)} #{get_city_state_zip(row)}")
+          result[:address] = AddressCleaner.parse("#{get_address(row)}, #{get_city_state_zip(row)}")
           result[:id] = get_id(row)
           result[:type] = get_type(row)
 
@@ -35,11 +35,7 @@ class CaUnclaimedProperty
         end
       
       end # end if first(...)
-#      return {:results => results, :total => results.size}
     end # end if page.status.code == 200
-    rescue
-      return @results = [] && @total = 0
-    
   end # end initialize
   
   def get_name(row)

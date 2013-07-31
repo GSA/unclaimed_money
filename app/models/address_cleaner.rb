@@ -1,4 +1,5 @@
 class AddressCleaner
+  require 'indirizzo'
 
   def self.parse(unformatted_address)
     return nil if unformatted_address.nil? || unformatted_address.blank?

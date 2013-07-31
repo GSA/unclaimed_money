@@ -26,8 +26,8 @@ class PbgcSearch
       end
       return {:results => results, :total => results.size}
     end
- #   rescue
-#      return {:results => [], :total => 0}
+    rescue
+      return {:results => [], :total => 0}
     
   end
 end

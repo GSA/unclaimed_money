@@ -3,14 +3,16 @@ ruby "1.9.3"
 
 gem 'rails', '3.2.14'
 
+gem 'capistrano'
 gem 'capybara'
-gem "capybara-webkit"
+gem 'capybara-webkit'
 gem 'json', '1.7.7'
 gem 'haml-rails'
 gem 'httparty'
 gem 'Indirizzo'
 gem 'jquery-rails'
 gem 'nokogiri'
+gem 'rvm-capistrano'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -51,6 +53,8 @@ group :development do
 end
 
 group :production do
+  gem 'headless'
+  gem 'mysql2'
   gem 'pg'
 end
 
