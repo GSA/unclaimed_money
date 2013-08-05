@@ -37,6 +37,9 @@ class MdUnclaimedProperty
         end
       end # end if first(...)
     end # end if page.status.code == 200
+    rescue # generic rescue clause to handle downed site
+      @results = nil
+      @total = 0
   end
   
   def get_claim(row)

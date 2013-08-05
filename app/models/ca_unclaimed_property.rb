@@ -28,6 +28,7 @@ class CaUnclaimedProperty
           result[:name] = get_name(row)
           result[:address] = AddressCleaner.parse("#{get_address(row)}, #{get_city_state_zip(row)}")
           result[:id] = get_id(row)
+          result[:href] = get_href(row)
           result[:type] = get_type(row)
 
           @results << result
@@ -36,6 +37,9 @@ class CaUnclaimedProperty
       
       end # end if first(...)
     end # end if page.status.code == 200
+    rescue # generic rescue clause to handle downed site
+      @results = nil
+      @total = 0
   end # end initialize
   
   def get_name(row)
@@ -63,9 +67,14 @@ class CaUnclaimedProperty
     row.css('td')[2].inner_html.squish
   end
 
+  def get_href(row)
+    return nil unless row.css('td')[3]
+    row.css('td a')[0]['href']
+  end
+
   def get_id(row)
     return nil unless row.css('td')[3]
-    row.css('td')[3].inner_html
+    row.css('td a').children.text  
   end
   
   def get_type(row)

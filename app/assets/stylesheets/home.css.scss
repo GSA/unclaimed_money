@@ -2,9 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$tooltip-pip-size: 0px;
+
 #search_form {
   select { height:36px; }
 }
+
+ol.lead {
+  padding-left: 2em;
+}
+
 #progressbar {
     width: 100%;
     height: 21px;

@@ -26,8 +26,7 @@ class PbgcSearch
       end
       return {:results => results, :total => results.size}
     end
-    rescue
+    rescue # generic rescue clause to handle downed site
       return {:results => [], :total => 0}
-    
   end
 end
