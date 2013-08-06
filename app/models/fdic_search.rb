@@ -32,7 +32,17 @@ class FdicSearch
     end
     return {:results => results, :total => results.size}
   rescue # generic rescue clause to handle downed site
-    return {:results => [], :total => 0}
+      return {:results => [], :total => 0}
+  end
+  
+  def self.build_tasks(id)
+    task_items = []
+    task_items << {:name => "Print and complete the FDIC Claimant Verification. Be sure to include your reference number: #{id}", :url => 'http://www2.fdic.gov/funds/claimform.htm'}
+    task_items << {:name => 'Have the completed form notarized by a notary public.'}
+    task_items << {:name => 'Mail completed, notarized form.'}
+    task_items << {:name => 'You will be notified by an FDIC representative within 30 days of receipt of form.'}
+    
+    {:params => {:task => {:name => "Claim your money from FDIC, reference number: #{id}", :task_items_attributes => task_items}}}
   end
 end
 

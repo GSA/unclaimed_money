@@ -82,4 +82,14 @@ class CaUnclaimedProperty
     row.css('td')[4].inner_html.scan(/(\w)Icon/).join.capitalize
   end
   
+  def self.build_tasks(id, url)
+    task_items = []
+    task_items << {:name => "Save your Property ID Number (#{id}) and print the Property Details screen for your records.", :url => url}
+    task_items << {:name => 'Fill out a Claim Affirmation Form online or call (800) 992-4647 to have a representative mail the form to you.'}
+    task_items << {:name => 'Mail the completed and signed Claim Affirmation Form along with the required documents.'}
+    task_items << {:name => 'Check the status of your claim on the Claims Status Page.', url: 'https://scoweb.sco.ca.gov/UCP/ClaimStatusSearch.aspx'}
+    
+    {:params => {:task => {:name => "Claim your money from CA, Property ID Number: #{id}", :task_items_attributes => task_items}}}
+  end
+  
 end

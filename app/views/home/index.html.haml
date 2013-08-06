@@ -1,15 +1,18 @@
 .row
-  .large-10.columns
+  .large-12.columns
     %h3
       Enter your information below to search for unclaimed funds
     %div.search_form
-      = form_tag "/search" do
-        %div.large-6
-          = label_tag "Select the states where you have previously lived"
-          = select_tag "states", "<option>California</option><option>Maryland</option>".html_safe, { :multiple => true, 'data-customforms' => "disabled"}
-        = label_tag "last_name", "Last name"
-        = text_field_tag "last_name"
-
+      = form_tag "/search", method: 'get', class: 'custom' do
+        %div.row
+          %div.large-4.columns
+            = label_tag "Select states where you have lived"
+            = select_tag "states", "<option>California</option><option>Maryland</option>".html_safe, { :multiple => true, 'data-customforms' => "disabled"}
+          %div.large-8.columns
+            = label_tag "last_name", "Last name"
+            = text_field_tag "last_name"
+        %div.right
+          = submit_tag "Search", class: 'search button'
 %div#searchModal.reveal-modal.expand
   %h4
     Search in progress...

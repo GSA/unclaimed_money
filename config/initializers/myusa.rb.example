@@ -1,0 +1,7 @@
+MYUSA_HOME="http://localhost:3000"
+MYUSA_FORMS_HOME="http://localhost:3001"
+MYUSA_CLIENT_ID = ""
+MYUSA_SECRET_ID = ""
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :myusa, MYUSA_CLIENT_ID, MYUSA_SECRET_ID, :client_options => {:site => MYUSA_HOME, :token_url => "/oauth/authorize"}, :scope => ["profile", "tasks", "submit_forms", "notifications"]
+end

@@ -1,6 +1,6 @@
 require 'bundler/capistrano'
 
-set :application, "mygov-account"
+set :application, "myusa-account"
 set :scm, "git"
 set :repository, "https://github.com/GSA-OCSIT/unclaimed_money.git"
 
@@ -15,8 +15,7 @@ role :web, "#{domain}"                          # Your HTTP server, Apache/etc
 role :app, "#{domain}"                          # This may be the same as your `Web` server
 role :db,  "#{domain}", :primary => true        # This is where Rails migrations will run
 
-before 'deploy:assets:precompile', 'deploy:symlink_db'
-before 'deploy:assets:precompile', 'deploy:symlink_config_for_staging'
+before 'deploy:assets:precompile', 'deploy:symlink_files'
 after "deploy:restart", "deploy:cleanup"
 
 namespace :deploy do
@@ -31,8 +30,9 @@ namespace :deploy do
     run "mkdir -p #{deploy_to}/shared/config"
   end
 
-  desc "Symlink configs"
-  task :symlink_configs, :roles => :app do
+  desc "Symlink files"
+  task :symlink_files, :roles => :app do
     run "ln -nfs #{deploy_to}/shared/config/*.yml #{release_path}/config/"
+    run "ln -nfs #{deploy_to}/shared/config/initializers/myusa.rb #{release_path}/config/initializers/myusa.rb"
   end
 end

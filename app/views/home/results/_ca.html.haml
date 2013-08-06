@@ -1,0 +1,52 @@
+- unless @ca_search.nil?
+  %section#ca
+    %p.title{ data: { 'section-title' => true } }
+      = link_to "CA Unclaimed Property (#{@ca_search.total})", "#"
+    %div.content{ data: { 'section-content' => true } }
+      %table.large-12
+        %thead
+          %tr
+            %th
+              Name
+            %th
+              Address
+            %th
+              ID Number
+            %th
+              Type
+            %th
+        %tbody
+          - @ca_search.results.each_with_index do |result, index|
+            %tr
+              %td= result[:name]
+              %td= result[:address]
+              %td= result[:id]
+              %td= ca_result_type(result[:type])
+              %td
+                = link_to 'Claim', '#', :class => 'small button', 'data-reveal-id' => "ca-modal-#{index}"
+                %div.reveal-modal.expand{ id: "ca-modal-#{index}" }
+                  - if flash["ca-modal-#{index}"] && flash[:success]
+                    %div.alert-box.success #{flash[:success]}
+                  = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "ca-modal-#{index}", task_type: 'ca', uid: result[:id], url: result[:href] ), :class => 'button positive right' unless session[:user] == {}
+                  %h2
+                    Start the claim process
+                  %ol.lead
+                    %li 
+                      Write down your Property ID Number 
+                      %span.label #{result[:id]}
+                      and print the #{link_to 'Property Details', result[:href], target: '_blank'} screen for your records.
+                    %li Fill out a Claim Affirmation Form online or call (800) 992-4647 to have a representative mail the form to you.
+                    %li
+                      Mail the completed and signed Claim Affirmation Form along with the required documents to:
+                      %ul.vcard
+                        %li.fn
+                          California State Controller's Office
+                          Unclaimed Property Division
+                        %li.street-address PO Box 942850
+                        %li.locality
+                          %span.city Sacramento,
+                          %span.state CA
+                          %span.zip 94250-5873
+                    %li Due to the large volume of claims, it may take up to 180 days to process your claim. You may check the status of your claim at any time on the #{link_to 'Claims Status Page', 'https://scoweb.sco.ca.gov/UCP/ClaimStatusSearch.aspx'}.  If you have an outstanding debt with a California state agency, city or county, your unclaimed property payment may be intercepted to pay the debt. Thank you for your patience.                      
+                    = link_to raw('&#215;'), "#", class: "close-reveal-modal"
+                    

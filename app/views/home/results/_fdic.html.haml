@@ -1,0 +1,63 @@
+%section#fdic
+  %p.title{ :data => { 'section-title' => true} }
+    = link_to "FDIC (#{@fdic_search[:total]})", "#"
+  %div.content{ data: { 'section-content' => true } }
+    %table.large-12
+      %thead
+        %tr
+          %th
+            Reference #
+          %th
+            Fund Owner Name
+          %th
+            Institution Name
+          %th
+            Location
+          %th
+            Claim #
+          %th
+            Check Date
+          %th
+            Check #
+          %th
+      %tbody
+        - @fdic_search[:results].each_with_index do |result, index|
+          %tr
+            %td= result[:reference_number]
+            %td= result[:fund_owner_name]
+            %td= result[:institution_name]
+            %td= "#{result[:city]}, #{result[:state]}"
+            %td= result[:claim_number]
+            %td= result[:check_date]
+            %td= result[:check_number]
+            %td
+              = link_to 'Claim', '#', :class => 'small button', 'data-reveal-id' => "fdic-modal-#{index}"
+              %div.reveal-modal.expand{ id: "fdic-modal-#{index}" }
+                - if flash["fdic-modal-#{index}"] && flash[:success]
+                  %div.alert-box.success #{flash[:success]}
+                = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "fdic-modal-#{index}", task_type: 'fdic', uid: result[:reference_number]), :class => 'button positive right' unless session[:user] == {}
+                %h2
+                  Start the claim process
+                %ol.lead
+                  %li 
+                    Print or download the #{link_to 'FDIC Claimant Verification form', 'http://www2.fdic.gov/funds/claimform.htm', target: '_blank'}. Use the print function in your browser to print the form. Then, complete the form by filling in the requested information in pen. Include your FDIC Reference Number 
+                    %span.label #{result[:reference_number]}
+                    next to your name.
+                  %li 
+                    Have the completed form notarized by a notary public.
+                    %br
+                    %br
+                  %li
+                    Mail completed, notarized form to:
+                    %ul.vcard
+                      %li.fn
+                        FDIC
+                        %br Attn: Claims Department - Unclaimed Funds
+                        Reference ##{result[:reference_number]}
+                      %li.street-address 1601 Bryan Street
+                      %li.locality
+                        %span.city Dallas,
+                        %span.state Texas
+                        %span.zip 75201
+                  %li You will be notified by an FDIC representative within 30 days of receipt of form. You may be notified in writing, by phone, or by receipt of check. If you have further inquiries, you may contact #{mail_to 'FDICUnclaimed@FDIC.gov', 'FDIC via E-Mail inquiries'} for status of claim.
+                = link_to raw('&#215;'), "#", class: "close-reveal-modal"

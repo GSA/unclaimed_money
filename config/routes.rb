@@ -1,6 +1,8 @@
 UnclaimedMoney::Application.routes.draw do
-  post 'search' => "home#search"
-  
+  match "/auth/:provider/callback" => "home#oauth_callback"
+  match 'search' => "home#search"
+  match "/logout" => "home#logout"
+  match "tasks" => 'home#tasks', as: 'add_tasks'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

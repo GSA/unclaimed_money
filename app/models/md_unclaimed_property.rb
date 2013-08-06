@@ -61,4 +61,11 @@ class MdUnclaimedProperty
     row.css('td')[4].text.strip.squish.titleize
   end
 
+  def self.build_tasks(id)
+    task_items = []
+    task_items << {:name => "Print and complete claim form ST-912. Be sure to indicate you claim number.", :url => 'http://comptroller.marylandtaxes.com/Public_Services/Unclaimed_Property/static_files/COT-ST912.pdf'}
+    task_items << {:name => "Mail the completed and signed Claim Affirmation Form to the Comptroller's Office."}
+    
+    {:params => {:task => {:name => "Claim your money from MD, Property ID Number: #{id}", :task_items_attributes => task_items}}}
+  end
 end

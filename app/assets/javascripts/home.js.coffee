@@ -2,11 +2,35 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-#jQuery ->
-#  $("#last_name").focus ->
-#    $('#searchModal').foundation('reveal', 'open');
-
 jQuery ->
-  $("#last_name").live 'keypress', (e) ->
+  $("#last_name").on 'keypress', (e) ->
     if e.keyCode == 13
       $('#searchModal').foundation('reveal', 'open');
+  $(".search.button").click ->
+    $('#searchModal').foundation('reveal', 'open');
+  $('body').on 'keypress', (e) ->
+    sections = $('section');
+    count = sections.size() - 1
+    section = $('section.active');
+    index = sections.index(section);
+    if e.keyCode == 93
+      if index == count
+        $('#'+sections[index].id).removeClass('active');
+        $('#'+sections[0].id).addClass('active');
+      else
+        $('#'+sections[index].id).removeClass('active');
+        $('#'+sections[index+1].id).addClass('active');
+    if e.keyCode == 91
+      if index == 0
+        $('#'+sections[index].id).removeClass('active');
+        $('#'+sections[count].id).addClass('active');
+      else
+        $('#'+sections[index].id).removeClass('active');
+        $('#'+sections[index-1].id).addClass('active');
+
+jQuery ->
+  hash = window.location.hash
+  if hash != ''
+    section = hash.match(/#(\w{2,4})-modal.*/)[1]
+    $('section#'+section).addClass('active')
+    $(hash).foundation('reveal', 'open')

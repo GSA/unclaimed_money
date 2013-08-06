@@ -16,6 +16,8 @@
 %body
   .row
     .large-12.columns
+      = button_to 'Login with MyUSA', "auth/myusa", :class => 'button positive right' if session[:user] == {}
+      = button_to 'Logout', logout_path, :class => 'button positive right' unless session[:user] == {}
       %h1
         = link_to 'Unclaimed Money', root_path
       %p

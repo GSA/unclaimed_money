@@ -29,4 +29,13 @@ class PbgcSearch
     rescue # generic rescue clause to handle downed site
       return {:results => [], :total => 0}
   end
+  
+  def self.build_tasks(url)
+    task_items = []
+    task_items << {:name => "Call PBGC toll-free at 1-800-326-LOST or fill out the secure form.", url: url}
+    task_items << {:name => 'Get more information about refunds with the Fact Sheet.', url: 'http://www.pbgc.gov/res/factsheets/page/missing-participant-program.html'}
+    
+    {:params => {:task => {:name => "Claim your money from PBGC", :task_items_attributes => task_items}}}
+  end
+
 end

@@ -11,6 +11,7 @@ gem 'haml-rails'
 gem 'httparty'
 gem 'Indirizzo'
 gem 'jquery-rails'
+gem 'omniauth-myusa', :git => 'https://github.com/GSA-OCSIT/omniauth-myusa.git'
 gem 'nokogiri'
 gem 'rvm-capistrano'
 
@@ -32,10 +33,10 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'mocha', require: 'mocha/api'
-  gem 'net-http-spy'
   gem "parallel_tests"
   gem 'pry'
   gem 'pry-nav'
+  gem 'quiet_assets'
   gem 'rspec-rails'
   gem "zeus-parallel_tests"
 end

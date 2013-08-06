@@ -1,0 +1,47 @@
+%section#hud
+  %p.title{ data: { 'section-title' => true } }
+    = link_to "HUD (#{@hud_search[:total]})", "#"
+  %div.content{ data: { 'section-content' => true } }
+    %table.large-12
+      %thead
+        %tr
+          %th
+            Name
+          %th
+            Address
+          %th
+            Claim date
+          %th
+            Case number
+          %th
+      %tbody
+        - @hud_search[:results].each_with_index do |result, index|
+          %tr
+            %td= result[:name]
+            %td= "#{result[:address]} #{result[:city] == ' ' ? '' : result[:city] + ', ' }#{result[:state]} #{result[:zip]}"
+            %td= result[:claim_date]
+            %td= result[:case_number]
+            %td
+              = link_to 'Claim', '#', :class => 'small button', 'data-reveal-id' => "hud-modal-#{index}"
+              %div.reveal-modal.expand{ id: "hud-modal-#{index}" }
+                - if flash["hud-modal-#{index}"] && flash[:success]
+                  %div.alert-box.success #{flash[:success]}
+                = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "hud-modal-#{index}", task_type: 'hud', uid: result[:case_number]), :class => 'button positive right' unless session[:user] == {}
+                %h2
+                  Start the claim process
+                %p
+                  Call 1-800-697-6967 to get your refund. If your name is not on the list, but you believe that you are owed a refund, call this same toll free number to ask about your status. You can also contact HUD by postal mail using the following address:
+                  %ul.vcard
+                    %li.fn U.S. Department of Housing and Urban Development
+                    %li.street-address P.O. Box 44372
+                    %li.locality
+                      %span.city Washington,
+                      %span.state DC
+                      %span.zip 20026-4372
+                  %h5 Note
+                  All inquiries should include your name, your FHA case number
+                  %span.label #{result[:case_number]}
+                  , the date that the mortgage was paid-in-full, the property address, and your daytime phone number.
+                  %h5 More Info
+                  For more information about refunds, read the #{link_to 'Fact Sheet', 'http://www.hud.gov/offices/hsg/comp/refunds/fhafact.cfm', target: '_blank'}
+                = link_to raw('&#215;'), "#", class: "close-reveal-modal"

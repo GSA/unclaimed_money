@@ -1,0 +1,49 @@
+- unless @md_search.nil?
+  %section#md
+    %p.title{ data: { 'section-title' => true } }
+      = link_to "MD Unclaimed Property (#{@md_search.total})", "#"
+    %div.content{ data: { 'section-content' => true } }
+      %table.large-12
+        %thead
+          %tr
+            %th
+              Claim
+            %th
+              Name
+            %th
+              Address
+            %th
+        %tbody
+          - @md_search.results.each_with_index do |result, index|
+            %tr
+              %td= result[:claim]
+              %td= result[:name]
+              %td= result[:address]
+              %td
+                = link_to 'Claim', '#', :class => 'small button', 'data-reveal-id' => "md-modal-#{index}"
+              %div.reveal-modal.expand{ id: "md-modal-#{index}" }
+                - if flash["md-modal-#{index}"] && flash[:success]
+                  %div.alert-box.success #{flash[:success]}
+                = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "md-modal-#{index}", task_type: 'md', uid: result[:claim] ), :class => 'button positive right' unless session[:user] == {}
+                %h2
+                  Start the claim process
+                %ol.lead
+                  %li 
+                    Print and complete claim form #{link_to 'ST-912', 'http://comptroller.marylandtaxes.com/Public_Services/Unclaimed_Property/static_files/COT-ST912.pdf', target: '_blank'}. Be sure to indicate you claim number: 
+                    %span.label #{result[:claim]}
+                  %li
+                    Mail the completed and signed Claim Affirmation Form to the Comptroller's Office at the following address:
+                    %ul.vcard
+                      %li.fn
+                        Comptroller of Maryland
+                        %br Compliance Division - Unclaimed Property Unit
+                      %li.street-address
+                        301 West Preston Street
+                        Room #310
+                      %li.locality
+                        %span.city Baltimore,
+                        %span.state Maryland
+                        %span.zip 21201-2383
+                  %h5 More Info
+                  %p If you have a question regarding unclaimed property, or would like assistance, please contact the Comptroller of Maryland's Unclaimed Property Unit at 410-767-1700 in the Baltimore metro area, or 1-800-782-7383 nationwide, or e-mail us at #{mail_to 'unclaim@comp.state.md.us'}.
+                  = link_to raw('&#215;'), "#", class: "close-reveal-modal"
