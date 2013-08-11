@@ -9,19 +9,15 @@ class PbgcSearch
       else
         results = []
         doc = Nokogiri::HTML(response.body)
-        doc.xpath("//table[@class='mp']/tr").each_with_index do |row, index|
-          if index == 0
-            next
-          else
-            result = {}
+        doc.xpath("//table[@class='mp']/tr")[1..25].each_with_index do |row, index|
+          result = {}
 
-            result[:name] = row.xpath("th/a").text.titleize
-            result[:claim_url] = row.xpath("th/a").attribute("href").value
-            result[:company] = row.xpath("td").first.text.squish.titleize
-            result[:last_known_address] = AddressCleaner.parse(row.xpath("td").last.text)
+          result[:name] = row.xpath("th/a").text.titleize
+          result[:claim_url] = row.xpath("th/a").attribute("href").value
+          result[:company] = row.xpath("td").first.text.squish.titleize
+          result[:last_known_address] = AddressCleaner.parse(row.xpath("td").last.text)
 
-            results << result
-          end
+          results << result
         end
       end
       return {:results => results, :total => results.size}

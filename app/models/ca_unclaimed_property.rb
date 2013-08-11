@@ -22,7 +22,7 @@ class CaUnclaimedProperty
         rows = doc.css('#ctl00_ContentPlaceHolder1_gvResults tr')[1..25]
 
         @results = []
-                
+
         rows.map do |row|
           result = {}
           result[:name] = get_name(row)

@@ -10,29 +10,26 @@ class FdicSearch
       else
         results = []
         doc = Nokogiri::HTML(response.body)
-        doc.xpath("//tr[@align='center']").each_with_index do |result, index|
-          if index == 0
-            next
-          else 
-            row = {}
+        
+        doc.xpath("//tr[@align='center']")[1..25].each_with_index do |result, index|
+          row = {}
 
-            row[:reference_number] = result.xpath("td/font")[0].text.squish.titleize
-            row[:fund_owner_name] = result.xpath("td/font")[1].text.squish.titleize
-            row[:institution_name] = result.xpath("td/font")[2].text.squish.titleize
-            row[:city] = result.xpath("td/font")[3].text.squish.titleize
-            row[:state] = result.xpath("td/font")[4].text.squish
-            row[:claim_number] = result.xpath("td/font")[5].text.squish.titleize
-            row[:check_date] = result.xpath("td/font")[6].text.squish.titleize
-            row[:check_number] = result.xpath("td/font")[7].text.squish.titleize
+          row[:reference_number] = result.xpath("td/font")[0].text.squish.titleize
+          row[:fund_owner_name] = result.xpath("td/font")[1].text.squish.titleize
+          row[:institution_name] = result.xpath("td/font")[2].text.squish.titleize
+          row[:city] = result.xpath("td/font")[3].text.squish.titleize
+          row[:state] = result.xpath("td/font")[4].text.squish
+          row[:claim_number] = result.xpath("td/font")[5].text.squish.titleize
+          row[:check_date] = result.xpath("td/font")[6].text.squish.titleize
+          row[:check_number] = result.xpath("td/font")[7].text.squish.titleize
 
-            results << row
-          end
+          results << row
         end
       end
     end
     return {:results => results, :total => results.size}
-  rescue # generic rescue clause to handle downed site
-      return {:results => [], :total => 0}
+#  rescue # generic rescue clause to handle downed site
+#      return {:results => [], :total => 0}
   end
   
   def self.build_tasks(id)

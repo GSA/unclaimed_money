@@ -10,7 +10,7 @@ class HudSearch
       else
         results = []
         doc = Nokogiri::HTML(response.body)
-        doc.xpath("//table[@width='600']/tr").each_with_index do |row, index|
+        doc.xpath("//table[@width='600']/tr")[1..25].each_with_index do |row, index|
           if index % 2 == 1
             next
           else

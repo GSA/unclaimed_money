@@ -23,7 +23,7 @@ class MdUnclaimedProperty
         rows = doc.css('#dgUnclaimedPR tbody tr')[1..25]
 
         @results = []
-                
+
         rows.map do |row|
           next unless row.css('td').count == 5
           
