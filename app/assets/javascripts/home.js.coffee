@@ -15,18 +15,14 @@ jQuery ->
     index = sections.index(section);
     if e.keyCode == 93
       if index == count
-        $('#'+sections[index].id).removeClass('active');
-        $('#'+sections[0].id).addClass('active');
+        $('#'+sections[0].id + ' p a').click();
       else
-        $('#'+sections[index].id).removeClass('active');
-        $('#'+sections[index+1].id).addClass('active');
+        $('#'+sections[index+1].id + ' p a').click();
     if e.keyCode == 91
       if index == 0
-        $('#'+sections[index].id).removeClass('active');
-        $('#'+sections[count].id).addClass('active');
+        $('#'+sections[count].id + ' p a').click();
       else
-        $('#'+sections[index].id).removeClass('active');
-        $('#'+sections[index-1].id).addClass('active');
+        $('#'+sections[index-1].id + ' p a').click();
 
 jQuery ->
   hash = window.location.hash
