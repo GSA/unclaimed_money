@@ -33,4 +33,4 @@
                 = link_to raw('&#215;'), "#", class: "close-reveal-modal"
     %div.bottom_buttons
       = button_to 'Search Again', root_path, :class => 'button positive right'
-      = button_to 'More Results', 'http://search.pbgc.gov/mp/mp.aspx', :class => 'button positive' if @pbgc_search[:total] == 25
+      = button_to 'More Results', 'http://search.pbgc.gov/mp/mp.aspx#commentForm', :class => 'button positive' if @pbgc_search[:total] == 25

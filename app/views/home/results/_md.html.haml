@@ -49,4 +49,4 @@
                   = link_to raw('&#215;'), "#", class: "close-reveal-modal"
       %div.bottom_buttons
         = button_to 'Search Again', root_path, :class => 'button positive right'
-        = button_to 'More Results', 'https://interactive.marylandtaxes.com/individuals/unclaim/default.aspx', :class => 'button positive' if @ca_search.total == 25
+        = button_to 'More Results', 'https://interactive.marylandtaxes.com/individuals/unclaim/default.aspx', :class => 'button positive' if @md_search.total == 25

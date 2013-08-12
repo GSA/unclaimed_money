@@ -63,4 +63,4 @@
                 = link_to raw('&#215;'), "#", class: "close-reveal-modal"
     %div.bottom_buttons
       = button_to 'Search Again', root_path, :class => 'button positive right'
-      = button_to 'More Results', 'http://www2.fdic.gov/funds/index.asp', :class => 'button positive' if @fdic_search[:total] == 25
+      = button_to 'More Results', 'http://www2.fdic.gov/funds/index.asp#Search', :class => 'button positive' if @fdic_search[:total] == 25
