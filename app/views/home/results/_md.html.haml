@@ -47,4 +47,6 @@
                   %h5 More Info
                   %p If you have a question regarding unclaimed property, or would like assistance, please contact the Comptroller of Maryland's Unclaimed Property Unit at 410-767-1700 in the Baltimore metro area, or 1-800-782-7383 nationwide, or e-mail us at #{mail_to 'unclaim@comp.state.md.us'}.
                   = link_to raw('&#215;'), "#", class: "close-reveal-modal"
-      = button_to 'More Results', 'https://interactive.marylandtaxes.com/individuals/unclaim/default.aspx', :class => 'button positive' if @ca_search.total == 25
+      %div.bottom_buttons
+        = button_to 'Search Again', root_path, :class => 'button positive right'
+        = button_to 'More Results', 'https://interactive.marylandtaxes.com/individuals/unclaim/default.aspx', :class => 'button positive' if @ca_search.total == 25

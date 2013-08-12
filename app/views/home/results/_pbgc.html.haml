@@ -31,4 +31,6 @@
                   %strong Be sure to provide us with a valid telephone number, e-mail address, or mailing address. They need some way to contact you, and any one of those items are suitable. Without that information, we are unable to help the person who may be owed money.
                 %p.lead PBGC will contact you shortly after they receive the information.
                 = link_to raw('&#215;'), "#", class: "close-reveal-modal"
-    = button_to 'More Results', 'http://search.pbgc.gov/mp/mp.aspx', :class => 'button positive' if @pbgc_search[:total] == 25
+    %div.bottom_buttons
+      = button_to 'Search Again', root_path, :class => 'button positive right'
+      = button_to 'More Results', 'http://search.pbgc.gov/mp/mp.aspx', :class => 'button positive' if @pbgc_search[:total] == 25

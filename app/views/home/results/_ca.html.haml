@@ -2,7 +2,7 @@
   %section#ca
     %p.title{ data: { 'section-title' => true } }
       = link_to "CA Unclaimed Property (#{@ca_search.total})", "#"
-    %div.content{ data: { 'section-content' => true } }
+    %div.content.clear{ data: { 'section-content' => true } }
       %table.large-12
         %thead
           %tr
@@ -49,4 +49,6 @@
                           %span.zip 94250-5873
                     %li Due to the large volume of claims, it may take up to 180 days to process your claim. You may check the status of your claim at any time on the #{link_to 'Claims Status Page', 'https://scoweb.sco.ca.gov/UCP/ClaimStatusSearch.aspx'}.  If you have an outstanding debt with a California state agency, city or county, your unclaimed property payment may be intercepted to pay the debt. Thank you for your patience.                      
                     = link_to raw('&#215;'), "#", class: "close-reveal-modal"
-      = button_to 'More Results', 'https://scoweb.sco.ca.gov/UCP/', :class => 'button positive' if @ca_search.total == 25
+      %div.bottom_buttons
+        = button_to 'Search Again', root_path, :class => 'button positive right'
+        = button_to 'More Results', 'https://scoweb.sco.ca.gov/UCP/', :class => 'button positive' if @ca_search.total == 25

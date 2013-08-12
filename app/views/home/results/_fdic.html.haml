@@ -61,4 +61,6 @@
                         %span.zip 75201
                   %li You will be notified by an FDIC representative within 30 days of receipt of form. You may be notified in writing, by phone, or by receipt of check. If you have further inquiries, you may contact #{mail_to 'FDICUnclaimed@FDIC.gov', 'FDIC via E-Mail inquiries'} for status of claim.
                 = link_to raw('&#215;'), "#", class: "close-reveal-modal"
-    = button_to 'More Results', 'http://www2.fdic.gov/funds/index.asp', :class => 'button positive' if @fdic_search[:total] == 25
+    %div.bottom_buttons
+      = button_to 'Search Again', root_path, :class => 'button positive right'
+      = button_to 'More Results', 'http://www2.fdic.gov/funds/index.asp', :class => 'button positive' if @fdic_search[:total] == 25
