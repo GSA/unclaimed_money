@@ -27,7 +27,7 @@
                 %div.reveal-modal.expand{ id: "ca-modal-#{index}" }
                   - if flash["ca-modal-#{index}"] && flash[:success]
                     %div.alert-box.success #{flash[:success]}
-                  = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "ca-modal-#{index}", task_type: 'ca', uid: result[:id], url: result[:href] ), :class => 'button positive right' unless session[:user] == {}
+                  = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "ca-modal-#{index}", task_type: 'ca', uid: result[:id], url: result[:href] ),  :class => 'button positive right'
                   %h2
                     Start the claim process
                   %ol.lead

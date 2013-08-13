@@ -35,7 +35,7 @@
               %div.reveal-modal.expand{ id: "fdic-modal-#{index}" }
                 - if flash["fdic-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
-                = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "fdic-modal-#{index}", task_type: 'fdic', uid: result[:reference_number]), :class => 'button positive right' unless session[:user] == {}
+                = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "fdic-modal-#{index}", task_type: 'fdic', uid: result[:reference_number]), :class => 'button positive right'
                 %h2
                   Start the claim process
                 %ol.lead

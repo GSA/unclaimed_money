@@ -32,14 +32,20 @@ class HomeController < ApplicationController
     session[:user] = auth.extra.raw_info.to_hash
     session[:token] = auth.credentials.token
     if request.env['action_dispatch.request.unsigned_session_cookie']['omniauth.origin']
-      redirect_to request.env['action_dispatch.request.unsigned_session_cookie']['omniauth.origin']
+      if request.env['omniauth.params']['modal']
+        flash[request.env['omniauth.params']['modal']] = true
+        flash[:success] = "You are now logged in to MyUSA and may add this item to your task list."
+        redirect_to "#{request.env['action_dispatch.request.unsigned_session_cookie']['omniauth.origin']}##{request.env['omniauth.params']['modal']}"
+      else
+        redirect_to request.env['action_dispatch.request.unsigned_session_cookie']['omniauth.origin']
+      end
     else
       redirect_to action:'index'
     end
   end
 
   def tasks
-    if @myusa_access_token
+    if session[:user] != {} && @myusa_access_token
       tasks = create_tasks
 
       if tasks.status == 200
@@ -52,7 +58,7 @@ class HomeController < ApplicationController
         redirect_to :back
       end
     else
-      redirect_to "auth/myusa"
+      redirect_to "/auth/myusa?modal=#{params[:modal]}"
     end
   end
   
