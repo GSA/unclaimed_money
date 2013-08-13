@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="Basic presentation about Unclaimed Money application and integration with the MyUSA platform done with Impress.js" />
+    <meta name="author" content="Justin Grevich" />
+
+    <title>Unclaimed Money, a Project MyUSA Application</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Diplomata+SC' rel='stylesheet' type='text/css'>
+    <link href="css/main.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  </head>
+
+  <body class="impress-not-supported">
+
+    <div class="fallback-message">
+      <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+      <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+    </div>
+
+    <div id="impress">
+        <div id="title" class="step" data-x="-4200" data-y="0"><img src="images/logo.png" alt="MyUSA Logo"></div>
+
+        <div id="ucmoney_logo" class="step" data-x="-3000" data-y="0"><h1>Unclaimed Money$</h1></div>
+
+        <div id='intro-age' class="step slide background" data-x="-2000" data-y="0">
+          <q>The CFPB may be new, unclaimed money programs are not</q>
+          <img src='images/cfpb.png' alt="Utah Example"/>
+        </div>
+
+        <div id='intro-breadth' class="step slide background" data-x="-1000" data-y="0">
+          <q>Unclaimed property programs all over the place (federal and state)</q>
+          <img src='images/utah.jpg' alt="Utah Example"/>
+        </div>
+
+        <div id='intro-amount' class="step slide background" data-x="0" data-y="0">
+          <q>It's <strong>a lot</strong> of money (2011)</q>
+          <ul>
+            <li>$41.7B to be returned by states</li>
+            <li>Average claim, $892</li>
+            <li>2.5M claims totaling $2.25B</li>
+          <ul>
+        </div>
+
+        <div id='demo' class="step slide background" data-x="1000" data-y="0">
+          <q>Billions of dollars have been lost. <strong>Could some of it be yours?</strong></q>
+          <h1><a href='http://money.grevi.ch' target='_blank'>Demo Time</a></h1>
+        </div>
+
+        <div id='todo' class="step slide background" data-x="2000" data-y="0">
+          <h1>The Future</h1>
+          <div><img src='images/uc_money_layout.png' alt='UC Money Layout' /></div>
+        </div>
+
+        <div id="overview" class="step" data-x="-1100" data-y="-1400" data-scale="5"><h1>Thanks!</h1></div>
+    </div>
+
+    <div class="hint"><p>Use a spacebar or arrow keys to navigate</p></div>
+
+    <script>
+      if ("ontouchstart" in document.documentElement) { 
+          document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+      }
+    </script>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+
+  </body>
+</html>
