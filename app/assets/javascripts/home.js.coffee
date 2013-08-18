@@ -8,6 +8,8 @@ jQuery ->
       $('#searchModal').foundation('reveal', 'open');
   $(".search.button").click ->
     $('#searchModal').foundation('reveal', 'open');
+  $('.close').click ->
+    $('.alert-box').remove();
   $('body').on 'keypress', (e) ->
     sections = $('section');
     count = sections.size() - 1
@@ -23,6 +25,17 @@ jQuery ->
         $('#'+sections[count].id + ' p a').click();
       else
         $('#'+sections[index-1].id + ' p a').click();
+  $("input.tm-input").tagsManager({
+    hiddenTagListName: 'states',
+    typeahead: true,
+    typeaheadSource: getStates(),
+    blinkBGColor_1: '#FFFF9C',
+    blinkBGColor_2: '#CDE69C',
+    onlyTagList: true
+  });
+  $( "input.tm-input" ).autocomplete({
+       source:  getStates()
+  });
 
 jQuery ->
   hash = window.location.hash

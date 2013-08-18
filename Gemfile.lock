@@ -113,6 +113,9 @@ GEM
     fastercsv (1.5.5)
     ffi (1.9.0)
     formatador (0.2.4)
+    foundation-icons-sass-rails (2.0.0)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     fssm (0.2.10)
     guard (1.8.2)
       formatador (>= 0.2.4)
@@ -315,7 +318,7 @@ GEM
     zeus-parallel_tests (0.2.4)
       parallel_tests (>= 0.11.3)
       zeus (~> 0.13.3)
-    zurb-foundation (4.0.9)
+    zurb-foundation (4.3.1)
       sass (>= 3.2.0)
 
 PLATFORMS
@@ -335,6 +338,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   faker
+  foundation-icons-sass-rails
   guard
   guard-livereload
   guard-rspec
@@ -366,4 +370,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   webmock
   zeus-parallel_tests
-  zurb-foundation (~> 4.0.0)
+  zurb-foundation (~> 4.3.0)

@@ -10,7 +10,7 @@ class FdicSearch
       else
         results = []
         doc = Nokogiri::HTML(response.body)
-        
+      
         doc.xpath("//tr[@align='center']")[1..25].each_with_index do |result, index|
           row = {}
 
@@ -24,12 +24,12 @@ class FdicSearch
           row[:check_number] = result.xpath("td/font")[7].text.squish.titleize
 
           results << row
-        end
-      end
-    end
+        end # .each_with_index do 
+      end # if  response.body =~ /No Records Found/
+    end # if response.code == 200
     return {:results => results, :total => results.size}
-#  rescue # generic rescue clause to handle downed site
-#      return {:results => [], :total => 0}
+  rescue # generic rescue clause to handle downed site
+    return {:results => [], :total => 0}
   end
   
   def self.build_tasks(id)

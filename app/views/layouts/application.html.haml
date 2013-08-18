@@ -10,17 +10,40 @@
   %meta{ charset: "utf-8" }
   %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
   %title Unclaimed Money
-  = stylesheet_link_tag    "application", :media => "all"
-  = javascript_include_tag "vendor/custom.modernizr"
+  = stylesheet_link_tag "application", :media => "all"
   = csrf_meta_tags
 %body
-  .row
-    .large-12.columns
-      = button_to 'Log in with MyUSA', "auth/myusa", :class => 'button positive right' if session[:user] == {}
-      = button_to 'Log out', logout_path, :class => 'button positive right' unless session[:user] == {}
-      %h1
-        = link_to 'Unclaimed Money', root_path
-      %p
-        Does the government owe you money?  Search once and find out!
+  %hr.red-stripe
+  = link_to image_tag('usa_gov_logo.png', id: 'usa_gov_logo'), 'http://www.usa.gov/', class: 'left'
+  %div.contain-to-grid
+    %nav.top-bar
+      %ul.title-area
+        %li.name
+        %li.toggle-topbar.menu-icon
+      %section.top-bar-section
+        %ul.left
+          %li.active
+            = link_to 'Home', root_url
+          %li.divider 
+          %li 
+            = link_to 'Site Index', 'http://www.usa.gov/site-index.shtml'
+          %li.divider 
+          %li 
+            = link_to 'Chat', 'http://answers.usa.gov/system/templates/selfservice/USAGov/#portal/1012/chat'
+          %li.divider 
+          %li 
+            = link_to 'Contact Us', 'http://www.usa.gov/Contact-Us.shtml'
+          %li.divider 
+          %li 
+            = link_to '1-800-FED-INFO', 'http://www.usa.gov/About/FEDINFO.shtml'
+      %section.top-bar-section
+        %ul.right
+          - if session[:user] == {}
+            = link_to image_tag('shield.png') + raw('Log In with <span><em>MY</em>USA</span>'), "auth/myusa", id: 'log_in_link', :class => 'right'
+          - else
+            = link_to image_tag('shield.png') + raw('Log Out with <span><em>MY</em>USA</span>'), logout_path, id: 'log_in_link', :class => 'right'
+          
   = yield
   = javascript_include_tag "application"
+  = javascript_include_tag "vendor/custom.modernizr"
+  

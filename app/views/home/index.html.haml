@@ -1,18 +1,30 @@
 .row
-  .large-12.columns
-    %h3
-      Enter your information below to search for unclaimed funds
+  %h1
+    = link_to 'Unclaimed Money Search', root_path
+  .large-7.columns
+    %p.lead
+      Does the government owe you money?<br />Search once and find out!
     %div.search_form
       = form_tag "/search", method: 'get', class: 'custom' do
         %div.row
-          %div.large-4.columns
-            = label_tag "Select states where you have lived"
-            = select_tag "states", "<option>California</option><option>Maryland</option>".html_safe, { :multiple => true, 'data-customforms' => "disabled"}
-          %div.large-8.columns
-            = label_tag "last_name", "Last name"
+          %div.large-12.columns.panel.radius
+            %p.lead
+              Enter your
+              %strong last name
+              or the 
+              %strong name of your business:
             = text_field_tag "last_name"
-        %div.right
-          = submit_tag "Search", class: 'search button'
+            %p.lead Find more by entering any U.S. state where you have lived:
+            = text_field_tag "states", nil, name: 'tags', placeholder: 'States', class: 'tm-input'
+            %small Use a comma, enter, or tab to separate state names
+          %div.large-12.columns.alert-box.radius
+            %p
+              %strong Search Tip:
+              Try searching with your maiden name, previous married name(s), and any legal aliases.
+            = link_to '×', '#', class: 'close'
+          %div
+            = button_tag raw("<i class='general foundicon-search'></i> Search"), class: 'search button radius'
+  = render partial: 'home/sidebar'
 %div#searchModal.reveal-modal.expand
   %h4
     Search in progress...
