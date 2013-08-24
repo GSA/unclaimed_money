@@ -11,19 +11,37 @@ $tooltip-pip-size: 0px;
 
 hr.red-stripe { border-color:#921B1E; border-width: 6px 0 0 0; margin:0; }
 
-a img#usa_gov_logo { height:38px; padding-left:16px; position:relative; z-index:10; }
-
-nav.top-bar {
-  #log_in_link { border-right: 6px solid #1d6484; color:#fff; padding:10px 10px 10px 30px; position:relative;
-    img { height:52px; position:absolute; left:-19px; top:-6px; }
-  }
-  #log_in_link:hover { background-color:#1d6484; border-right:6px solid #112136; color:#fff; padding:10px 10px 10px 30px; position:relative;
-    img { height:52px; position:absolute; left:-19px; top:-6px; }
-  }
-  
+a img#usa_gov_logo { height:38px; padding:2px 16px 0; position:relative; z-index:10; }
+a.usa_logo {
+  height:45px;
+  /* IE10 Consumer Preview */ 
+  background-image: -ms-linear-gradient(top, #FFFFFF 0%, #e6e6e6 100%);
+  /* Mozilla Firefox */ 
+  background-image: -moz-linear-gradient(top, #FFFFFF 0%, #e6e6e6 100%);
+  /* Opera */ 
+  background-image: -o-linear-gradient(top, #FFFFFF 0%, #e6e6e6 100%);
+  /* Webkit (Safari/Chrome 10) */ 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #e6e6e6));
+  /* Webkit (Chrome 11+) */ 
+  background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #e6e6e6 100%);
+  /* W3C Markup, IE10 Release Preview */ 
+  background-image: linear-gradient(to bottom, #FFFFFF 0%, #e6e6e6 100%);  
 }
 
-.contain-to-grid, nav.top-bar, .top-bar-section li a:not(.button) { 
+#log_in_link { background-color:#112136; border-right: 6px solid #1d6484; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
+  img { height:52px; position:absolute; left:-19px; top:-6px; }
+}
+#log_in_link:hover { background-color:#1d6484; border-right:6px solid #112136; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
+  img { height:52px; position:absolute; left:-19px; top:-6px; }
+}
+
+.top-bar .toggle-topbar.menu-icon { padding-right:20px;
+  a { color:#112136;
+    span { color:#112136; }
+  }
+}
+
+nav.top-bar, .top-bar-section li a:not(.button) { 
   /* IE10 Consumer Preview */ 
   background-image: -ms-linear-gradient(top, #FFFFFF 0%, #e6e6e6 100%);
   /* Mozilla Firefox */ 
@@ -113,3 +131,10 @@ div.alert-box { background-color:#d9edf7; border:1px solid #bce8f1; color:#3a87a
 }
 
 .bottom_buttons { height:43px; }
+
+@media only screen and (max-width: 940px) {
+  .top-bar-section li a:not(.button) { 
+    background:none;
+    background-color: #e6e6e6;
+  }
+}

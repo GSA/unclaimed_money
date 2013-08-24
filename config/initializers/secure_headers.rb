@@ -4,8 +4,8 @@
   config.x_content_type_options = "nosniff"
   config.x_xss_protection = {:value => 1, :mode => 'block'}
   config.csp = {
-    :default_src => "https://* self",
-    :frame_src => "https://* self",
-    :img_src => "https://*"
+    :default_src => "http://*",
+    :frame_src => "http://* self",
+    :img_src => "http://* self"
   }
 end
