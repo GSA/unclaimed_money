@@ -30,10 +30,16 @@ a.usa_logo {
 
 #log_in_link { background-color:#112136; border-right: 6px solid #1d6484; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
   img { height:52px; position:absolute; left:-19px; top:-6px; }
+  span { font-weight: normal; }
 }
 #log_in_link:hover { background-color:#1d6484; border-right:6px solid #112136; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
   img { height:52px; position:absolute; left:-19px; top:-6px; }
+  span { font-weight: normal; }
 }
+
+#log_in_link span:after { content: ' with ';}
+#log_in_link strong:after { content: 'MyUSA';}
+
 
 .top-bar .toggle-topbar.menu-icon { padding-right:20px;
   a { color:#112136;
@@ -137,4 +143,9 @@ div.alert-box { background-color:#d9edf7; border:1px solid #bce8f1; color:#3a87a
     background:none;
     background-color: #e6e6e6;
   }
+}
+
+@media only screen and (max-width: 768px) {
+  #log_in_link span:after { content: none;}
+  #log_in_link strong:after { content: none;}
 }

@@ -16,9 +16,9 @@
   %hr.red-stripe
   = link_to image_tag('usa_gov_logo.png', id: 'usa_gov_logo'), 'http://www.usa.gov/', class: 'left usa_logo'
   - if session[:user] == {}
-    = link_to image_tag('shield.png') + raw('Log In with <strong>MyUSA</strong>'), "auth/myusa", id: 'log_in_link', :class => 'right'
+    = link_to image_tag('shield.png') + raw('<span>Log In</span><strong></strong>'), "auth/myusa", id: 'log_in_link', :class => 'right'
   - else
-    = link_to image_tag('shield.png') + raw('Log Out with <strong>MyUSA</strong>'), logout_path, id: 'log_in_link', :class => 'right'
+    = link_to image_tag('shield.png') + raw('<span>Log Out</span><strong></strong>'), logout_path, id: 'log_in_link', :class => 'right'
   %nav.top-bar
     %ul.title-area
       %li.name
