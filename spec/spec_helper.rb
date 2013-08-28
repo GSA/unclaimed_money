@@ -32,27 +32,11 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
-  
+  config.before(:suite) { DatabaseCleaner.strategy = :truncation }
+  config.before(:each) { DatabaseCleaner.start }
+  config.after(:each) { DatabaseCleaner.clean }
   config.before(:each) { GC.disable }
   config.after(:each) { GC.enable }
-  
-  config.before(:all) do
-    DeferredGarbageCollection.start
-  end
-
-  config.after(:all) do
-    DeferredGarbageCollection.reconsider
-  end
-
+  config.before(:all) { DeferredGarbageCollection.start }
+  config.after(:all) { DeferredGarbageCollection.reconsider }
 end
