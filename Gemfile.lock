@@ -204,7 +204,6 @@ GEM
     parallel (0.7.1)
     parallel_tests (0.15.0)
       parallel
-    pg (0.16.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -296,6 +295,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.8)
     temple (0.6.6)
     terminal-table (1.4.5)
     thin (1.5.1)
@@ -358,7 +358,6 @@ DEPENDENCIES
   nokogiri
   omniauth-myusa!
   parallel_tests
-  pg
   pry
   pry-nav
   quiet_assets
@@ -370,6 +369,7 @@ DEPENDENCIES
   secure_headers
   shoulda
   simplecov
+  sqlite3
   thin
   uglifier (>= 1.0.3)
   webmock

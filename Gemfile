@@ -56,8 +56,7 @@ end
 
 group :production do
   gem 'headless'
-  gem 'mysql2'
-  gem 'pg'
+  gem 'sqlite3'
 end
 
 group :test do
