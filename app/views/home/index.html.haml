@@ -9,12 +9,15 @@
         %div.row
           %div.large-12.columns.panel.radius
             %p.lead
-              Enter your
-              %strong last name
-              or the 
-              %strong name of your business:
+              %label{"for"=>"last_name"}
+                Enter your
+                %strong last name
+                or the 
+                %strong name of your business:
             = text_field_tag "last_name"
-            %p.lead Find more by entering any U.S. state where you have lived:
+            %p.lead 
+              %label{"for"=>"states"}
+                Find more by entering any U.S. state where you have lived:
             = text_field_tag "states", nil, name: 'tags', placeholder: 'States', class: 'tm-input'
             %small Use a comma, enter, or tab to separate state names
           %div.large-12.columns.alert-box.radius
