@@ -48,7 +48,6 @@ group :development do
   gem 'guard-livereload'
   gem 'hpricot'
   gem 'meta_request'
-  gem 'mysql2'
   gem 'quiet_assets'
   gem 'ruby_parser'
   gem 'thin'
@@ -56,11 +55,9 @@ end
 
 group :production do
   gem 'headless'
-  gem 'sqlite3'
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda'
   gem 'simplecov', :require => false
