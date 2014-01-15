@@ -24,7 +24,7 @@
               %div.reveal-modal.expand{ id: "md-modal-#{index}" }
                 - if flash["md-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
-                = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "md-modal-#{index}", task_type: 'md', uid: result[:claim] ), :class => 'button positive radius right'
+                = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "md-modal-#{index}", task_type: 'md', uid: result[:claim] ), :class => 'button positive radius right'bottom-buttons
                 %h2
                   Start the claim process
                 %ol.lead
@@ -47,6 +47,6 @@
                   %h3 More Info
                   %p If you have a question regarding unclaimed property, or would like assistance, please contact the Comptroller of Maryland's Unclaimed Property Unit at 410-767-1700 in the Baltimore metro area, or 1-800-782-7383 nationwide, or e-mail us at #{mail_to 'unclaim@comp.state.md.us'}.
                   = link_to raw('&#215;'), "#", class: "close-reveal-modal"
-      %div.bottom_buttons
+      %div.bottom-buttons
         = button_to 'Search Again', root_path, :class => 'button positive radius right'
         = button_to 'More Results', 'https://interactive.marylandtaxes.com/individuals/unclaim/default.aspx', :class => 'button positive radius' if @md_search.total == 25
