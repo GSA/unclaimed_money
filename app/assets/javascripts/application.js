@@ -29,3 +29,14 @@ function getStates() {
 }
 
 $(function(){ $(document).foundation(); });
+
+$("input.tm-input" ).autocomplete({
+	source:  function( request, response ) {
+		var matches = $.map(getStates(), function(state){
+			if ( state.toUpperCase().indexOf(request.term.toUpperCase()) === 0 ) {
+				return state;
+      }
+    });
+    response(matches);
+  }
+});

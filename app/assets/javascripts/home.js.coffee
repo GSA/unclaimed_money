@@ -33,9 +33,7 @@ jQuery ->
     blinkBGColor_2: '#CDE69C',
     onlyTagList: true
   });
-  $( "input.tm-input" ).autocomplete({
-       source:  getStates()
-  });
+
 
 jQuery ->
   hash = window.location.hash
