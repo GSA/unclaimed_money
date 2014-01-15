@@ -14,11 +14,11 @@
   = csrf_meta_tags
 %body
   %hr.red-stripe
-  = link_to image_tag('usa-gov-logo.png', id: 'usa-gov-logo'), 'http://www.usa.gov/', class: 'left usa-logo'
+  = link_to image_tag('usa-gov-logo.png', id: 'usa-gov-logo', alt: 'USA.gov'), 'http://www.usa.gov/', class: 'left usa-logo'
   - if session[:user] == {}
-    = link_to image_tag('shield.png') + raw('<span>Log In</span><strong></strong>'), "auth/myusa", id: 'log-in-link', :class => 'right'
+    = link_to image_tag('shield.png', alt: 'MyUSA') + raw('<span>Log In</span><strong></strong>'), "auth/myusa", id: 'log-in-link', :class => 'right'
   - else
-    = link_to image_tag('shield.png') + raw('<span>Log Out</span><strong></strong>'), logout_path, id: 'log-in-link', :class => 'right'
+    = link_to image_tag('shield.png', alt: 'MyUSA') + raw('<span>Log Out</span><strong></strong>'), logout_path, id: 'log-in-link', :class => 'right'
   %nav.top-bar
     %ul.title-area
       %li.name
