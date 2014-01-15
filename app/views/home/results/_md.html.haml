@@ -24,7 +24,7 @@
               %div.reveal-modal.expand{ id: "md-modal-#{index}" }
                 - if flash["md-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
-                = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "md-modal-#{index}", task_type: 'md', uid: result[:claim] ), :class => 'button positive radius right'bottom-buttons
+                = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "md-modal-#{index}", task_type: 'md', uid: result[:claim] ), :class => 'button positive radius right'
                 %h2
                   Start the claim process
                 %ol.lead
