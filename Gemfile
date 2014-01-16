@@ -54,7 +54,6 @@ group :development do
   gem 'guard-livereload'
   gem 'hpricot'
   gem 'meta_request'
-  gem 'quiet_assets'
   gem 'ruby_parser'
   gem 'thin'
 end
