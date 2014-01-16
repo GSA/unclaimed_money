@@ -4,6 +4,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'simplecov'
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 require 'webmock/rspec'
 
 SimpleCov.start 'rails'
