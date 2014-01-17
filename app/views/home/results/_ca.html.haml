@@ -1,4 +1,4 @@
-- unless @ca_search.nil?
+- unless @ca_search.try(:results).nil?
   %section#ca
     %p.title{ data: { 'section-title' => true } }
       = link_to "California (#{@ca_search.total})", "#"

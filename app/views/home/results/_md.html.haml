@@ -1,4 +1,4 @@
-- unless @md_search.nil?
+- unless @md_search.try(:results).nil?
   %section#md
     %p.title{ data: { 'section-title' => true } }
       = link_to "Maryland (#{@md_search.total})", "#"
