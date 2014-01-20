@@ -31,7 +31,7 @@
             %td= result[:check_date]
             %td= result[:check_number]
             %td
-              = link_to 'Claim', '#', :class => 'small button', 'data-reveal-id' => "fdic-modal-#{index}"
+              = link_to 'Claim', '#', :class => 'small button underline', 'data-reveal-id' => "fdic-modal-#{index}"
               %div.reveal-modal.expand{ id: "fdic-modal-#{index}" }
                 - if flash["fdic-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
@@ -40,7 +40,7 @@
                   Start the claim process
                 %ol.lead
                   %li 
-                    Print or download the #{link_to 'FDIC Claimant Verification form', 'http://www2.fdic.gov/funds/claimform.htm', target: '_blank'}. Use the print function in your browser to print the form. Then, complete the form by filling in the requested information in pen. Include your FDIC Reference Number 
+                    Print or download the #{link_to 'FDIC Claimant Verification form', 'http://www2.fdic.gov/funds/claimform.htm', target: '_blank', class: 'underline'}. Use the print function in your browser to print the form. Then, complete the form by filling in the requested information in pen. Include your FDIC Reference Number 
                     %span.label #{result[:reference_number]}
                     next to your name.
                   %li 

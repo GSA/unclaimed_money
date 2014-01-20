@@ -23,7 +23,7 @@
               %td= result[:id]
               %td= ca_result_type(result[:type])
               %td
-                = link_to 'Claim', '#', :class => 'small button', 'data-reveal-id' => "ca-modal-#{index}"
+                = link_to 'Claim', '#', :class => 'small button underline', 'data-reveal-id' => "ca-modal-#{index}"
                 %div.reveal-modal.expand{ id: "ca-modal-#{index}" }
                   - if flash["ca-modal-#{index}"] && flash[:success]
                     %div.alert-box.success #{flash[:success]}
@@ -34,7 +34,7 @@
                     %li 
                       Write down your Property ID Number 
                       %span.label #{result[:id]}
-                      and print the #{link_to 'Property Details', result[:href], target: '_blank'} screen for your records.
+                      and print the #{link_to 'Property Details', result[:href], target: '_blank', class: 'underline'} screen for your records.
                     %li Fill out a Claim Affirmation Form online or call (800) 992-4647 to have a representative mail the form to you.
                     %li
                       Mail the completed and signed Claim Affirmation Form along with the required documents to:

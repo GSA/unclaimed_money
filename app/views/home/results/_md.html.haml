@@ -20,7 +20,7 @@
               %td= result[:name]
               %td= result[:address]
               %td
-                = link_to 'Claim', '#', :class => 'small button', 'data-reveal-id' => "md-modal-#{index}"
+                = link_to 'Claim', '#', :class => 'small button underline', 'data-reveal-id' => "md-modal-#{index}"
               %div.reveal-modal.expand{ id: "md-modal-#{index}" }
                 - if flash["md-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
@@ -29,7 +29,7 @@
                   Start the claim process
                 %ol.lead
                   %li 
-                    Print and complete claim form #{link_to 'ST-912', 'http://comptroller.marylandtaxes.com/Public_Services/Unclaimed_Property/static_files/COT-ST912.pdf', target: '_blank'}. Be sure to indicate you claim number: 
+                    Print and complete claim form #{link_to 'ST-912', 'http://comptroller.marylandtaxes.com/Public_Services/Unclaimed_Property/static_files/COT-ST912.pdf', target: '_blank', class: 'underline'}. Be sure to indicate you claim number: 
                     %span.label #{result[:claim]}
                   %li
                     Mail the completed and signed Claim Affirmation Form to the Comptroller's Office at the following address:

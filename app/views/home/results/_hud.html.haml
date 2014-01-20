@@ -22,7 +22,7 @@
             %td= result[:claim_date]
             %td= result[:case_number]
             %td
-              = link_to 'Claim', '#', :class => 'small button', 'data-reveal-id' => "hud-modal-#{index}"
+              = link_to 'Claim', '#', :class => 'small button underline', 'data-reveal-id' => "hud-modal-#{index}"
               %div.reveal-modal.expand{ id: "hud-modal-#{index}" }
                 - if flash["hud-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
@@ -43,7 +43,7 @@
                   %span.label #{result[:case_number]}
                   , the date that the mortgage was paid-in-full, the property address, and your daytime phone number.
                   %h5 More Info
-                  For more information about refunds, read the #{link_to 'Fact Sheet', 'http://www.hud.gov/offices/hsg/comp/refunds/fhafact.cfm', target: '_blank'}
+                  For more information about refunds, read the #{link_to 'Fact Sheet', 'http://www.hud.gov/offices/hsg/comp/refunds/fhafact.cfm', target: '_blank', class: 'underline'}
                 = link_to raw('&#215;'), "#", class: "close-reveal-modal"
     %div.bottom-buttons
       = button_to 'Search Again', root_path, :class => 'button positive radius right'    
