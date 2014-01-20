@@ -20,26 +20,19 @@
   - else
     = link_to image_tag('shield.png', alt: 'MyUSA') + raw('<span>Log Out</span><strong></strong>'), logout_path, id: 'log-in-link', :class => 'right'
   %nav.top-bar
-    %ul.title-area
-      %li.name
-      %li.toggle-topbar.menu-icon
-        = link_to raw('<span></span>'), ""
+    
     %section.top-bar-section
       %ul.left
         %li.active
-          = link_to 'Home', root_url
-        %li.divider 
+          = link_to 'Home', root_url, class: "grey-right-border"
         %li 
-          = link_to 'Site Index', 'http://www.usa.gov/site-index.shtml'
-        %li.divider 
+          = link_to 'Site Index', 'http://www.usa.gov/site-index.shtml', class: "grey-right-border white-left-border"
         %li 
-          = link_to 'Chat', 'http://answers.usa.gov/system/templates/selfservice/USAGov/#portal/1012/chat'
-        %li.divider 
+          = link_to 'Chat', 'http://answers.usa.gov/system/templates/selfservice/USAGov/#portal/1012/chat', class: "grey-right-border white-left-border"
         %li 
-          = link_to 'Contact Us', 'http://www.usa.gov/Contact-Us.shtml'
-        %li.divider 
+          = link_to 'Contact Us', 'http://www.usa.gov/Contact-Us.shtml', class: "grey-right-border white-left-border"
         %li 
-          = link_to '1-800-FED-INFO', 'http://www.usa.gov/About/FEDINFO.shtml'
+          = link_to '1-800-FED-INFO', 'http://www.usa.gov/About/FEDINFO.shtml', class: "white-left-border"
           
   = yield
   = javascript_include_tag "application"

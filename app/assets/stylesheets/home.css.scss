@@ -4,6 +4,15 @@
 
 @import url(http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911);
 
+.white-left-border{
+	border-left: 1px solid white;
+
+}
+
+.grey-right-border{
+	border-right: 1px solid #cdcdcd;
+}
+
 .underline{
 	text-decoration:underline;
 }
