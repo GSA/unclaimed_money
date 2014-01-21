@@ -23,8 +23,12 @@
     
     %section.top-bar-section
       %ul.left
-        %li.active
-          = link_to 'Home', root_url, class: "grey-right-border"
+        - if current_page?("/")
+          %li.active
+            = link_to 'Home', root_url, class: "grey-right-border"
+        - else
+          %li
+            = link_to 'Home', root_url, class: "grey-right-border"
         %li 
           = link_to 'Site Index', 'http://www.usa.gov/site-index.shtml', class: "grey-right-border white-left-border"
         %li 
