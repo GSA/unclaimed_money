@@ -15,7 +15,7 @@
             %th
         %tbody
           - @md_search.results.each_with_index do |result, index|
-            %tr
+            %tr{:scope => "row"}
               %td= result[:claim]
               %td= result[:name]
               %td= result[:address]

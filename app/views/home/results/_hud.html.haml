@@ -16,7 +16,7 @@
           %th
       %tbody
         - @hud_search[:results].each_with_index do |result, index|
-          %tr
+          %tr{:scope => "row"}
             %td= result[:name]
             %td= "#{result[:address]} #{result[:city] == ' ' ? '' : result[:city] + ', ' }#{result[:state]} #{result[:zip]}"
             %td= result[:claim_date]

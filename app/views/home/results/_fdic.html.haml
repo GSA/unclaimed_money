@@ -22,7 +22,7 @@
           %th
       %tbody
         - @fdic_search[:results].each_with_index do |result, index|
-          %tr
+          %tr{:scope => "row"}
             %td= result[:reference_number]
             %td= result[:fund_owner_name]
             %td= result[:institution_name]

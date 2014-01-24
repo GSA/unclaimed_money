@@ -14,7 +14,7 @@
           %th
       %tbody
         - @pbgc_search[:results].each_with_index do |result, index|
-          %tr
+          %tr{:scope => "row"}
             %td= result[:name]
             %td= result[:company]
             %td= result[:last_known_address]
