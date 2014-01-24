@@ -19,12 +19,6 @@
                 or the 
                 %strong name of your business:
             = text_field_tag "last_name"
-            %p.lead 
-              %label{"for"=>"states"}
-                Find more by entering any U.S. state where you have lived:
-            = text_field_tag "states", nil, name: 'tags', placeholder: 'States', class: 'tm-input'
-            %small Use a comma, enter, or tab to separate state names
-          
           %div
             = button_tag raw("<i class='general foundicon-search'></i> Search"), class: 'search button radius'
   = render partial: 'home/sidebar'
