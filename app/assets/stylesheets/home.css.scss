@@ -4,6 +4,12 @@
 
 @import url(http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911);
 
+:focus, a:focus {
+  outline: #edb864 solid 3px;
+  position: relative;
+  z-index: 1000;
+}
+
 .white-left-border{
 	border-left: 1px solid white;
 
