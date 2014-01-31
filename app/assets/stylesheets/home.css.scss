@@ -156,6 +156,26 @@ div.alert-box { background-color:#d9edf7; border:1px solid #bce8f1; color:#3a87a
 
 .bottom-buttons { height:43px; }
 
+a:focus, input:focus, button:focus,
+input[type="text"]:focus,
+input[type="password"]:focus, 
+input[type="date"]:focus, 
+input[type="datetime"]:focus, 
+input[type="datetime-local"]:focus, 
+input[type="month"]:focus, 
+input[type="week"]:focus, 
+input[type="email"]:focus, 
+input[type="number"]:focus, 
+input[type="search"]:focus, 
+input[type="tel"]:focus, 
+input[type="time"]:focus, 
+input[type="url"]:focus, 
+textarea:focus{
+    outline:#edb864 solid 3px;
+    position:relative;
+    z-index:1000;
+}
+
 @media only screen and (max-width: 940px) {
   .top-bar-section li a:not(.button) { 
     background:none;
