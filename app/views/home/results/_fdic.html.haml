@@ -35,7 +35,7 @@
               %div.reveal-modal.expand{ id: "fdic-modal-#{index}" }
                 - if flash["fdic-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
-                = link_to raw('&#215;'), "#", class: "close-reveal-modal modal-close"
+                = link_to raw('&#215;'), "#", class: "close-reveal-modal"
                 %br
                 = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "fdic-modal-#{index}", task_type: 'fdic', uid: result[:reference_number]), :class => 'button positive radius right'
                 %h2
