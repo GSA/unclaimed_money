@@ -38,9 +38,9 @@ jQuery ->
     $('#skip-target').focus();
 
   $('#skip-link').focus ->
-    $('#header').hide()
+    $('#header').addClass('move-header')
   $('#skip-link').on 'blur', ->
-    $('#header').show()
+    $('#header').removeClass('move-header')
 
 
 jQuery ->
