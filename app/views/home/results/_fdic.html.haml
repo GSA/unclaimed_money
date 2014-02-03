@@ -37,7 +37,10 @@
                   %div.alert-box.success #{flash[:success]}
                 = link_to raw('&#215;'), "#", class: "close-reveal-modal"
                 %br
-                = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "fdic-modal-#{index}", task_type: 'fdic', uid: result[:reference_number]), :class => 'button positive radius right'
+                - if session[:user] == {}
+                  = link_to image_tag('shield.png', alt: 'MyUSA') + raw('<span>Log In To Save</span><strong></strong>'), "auth/myusa", id: 'log-in-link', :class => 'right'
+                - else
+                  = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "fdic-modal-#{index}", task_type: 'fdic', uid: result[:reference_number]), :class => 'button positive radius right'
                 %h2
                   Start the claim process
                 %ol.lead
