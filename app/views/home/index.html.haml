@@ -1,4 +1,6 @@
 .row
+  %p#skip-target-holder
+    = link_to "skip-target", "#skip-target", class: "skip", id: "skip-target", tabindex: "-1"
   %h1
     = link_to 'Unclaimed Money Search', root_path
   .large-7.columns

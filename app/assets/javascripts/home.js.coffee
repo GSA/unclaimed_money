@@ -34,6 +34,14 @@ jQuery ->
     onlyTagList: true
   });
 
+  $('#skip-link').click ->
+    $('#skip-target').focus();
+
+  $('#skip-link').focus ->
+    $('#header').hide()
+  $('#skip-link').on 'blur', ->
+    $('#header').show()
+
 
 jQuery ->
   hash = window.location.hash

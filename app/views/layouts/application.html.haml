@@ -13,30 +13,33 @@
   = stylesheet_link_tag "application", :media => "all"
   = csrf_meta_tags
 %body
-  %hr.red-stripe
-  = link_to image_tag('usa-gov-logo.png', id: 'usa-gov-logo', alt: 'USA.gov'), 'http://www.usa.gov/', class: 'left usa-logo'
-  - if session[:user] == {}
-    = link_to image_tag('shield.png', alt: 'MyUSA') + raw('<span>Log In</span><strong></strong>'), "auth/myusa", id: 'log-in-link', :class => 'right'
-  - else
-    = link_to image_tag('shield.png', alt: 'MyUSA') + raw('<span>Log Out</span><strong></strong>'), logout_path, id: 'log-in-link', :class => 'right'
-  %nav.top-bar
+  %div.skip-link-holder
+    = link_to 'Skip to Main Content', '#skip-target', id: "skip-link"
+  %div#header
+    %hr.red-stripe
+    = link_to image_tag('usa-gov-logo.png', id: 'usa-gov-logo', alt: 'USA.gov'), 'http://www.usa.gov/', class: 'left usa-logo'
+    - if session[:user] == {}
+      = link_to image_tag('shield.png', alt: 'MyUSA') + raw('<span>Log In</span><strong></strong>'), "auth/myusa", id: 'log-in-link', :class => 'right'
+    - else
+      = link_to image_tag('shield.png', alt: 'MyUSA') + raw('<span>Log Out</span><strong></strong>'), logout_path, id: 'log-in-link', :class => 'right'
+    %nav.top-bar
     
-    %section.top-bar-section
-      %ul.left
-        - if current_page?("/")
-          %li.active
-            = link_to 'Home', root_url, class: "grey-right-border"
-        - else
-          %li
-            = link_to 'Home', root_url, class: "grey-right-border"
-        %li 
-          = link_to 'Site Index', 'http://www.usa.gov/site-index.shtml', class: "grey-right-border white-left-border"
-        %li 
-          = link_to 'Chat', 'http://answers.usa.gov/system/templates/selfservice/USAGov/#portal/1012/chat', class: "grey-right-border white-left-border"
-        %li 
-          = link_to 'Contact Us', 'http://www.usa.gov/Contact-Us.shtml', class: "grey-right-border white-left-border"
-        %li 
-          = link_to '1-800-FED-INFO', 'http://www.usa.gov/About/FEDINFO.shtml', class: "white-left-border"
+      %section.top-bar-section
+        %ul.left
+          - if current_page?("/")
+            %li.active
+              = link_to 'Home', root_url, class: "grey-right-border"
+          - else
+            %li
+              = link_to 'Home', root_url, class: "grey-right-border"
+          %li 
+            = link_to 'Site Index', 'http://www.usa.gov/site-index.shtml', class: "grey-right-border white-left-border"
+          %li 
+            = link_to 'Chat', 'http://answers.usa.gov/system/templates/selfservice/USAGov/#portal/1012/chat', class: "grey-right-border white-left-border"
+          %li 
+            = link_to 'Contact Us', 'http://www.usa.gov/Contact-Us.shtml', class: "grey-right-border white-left-border"
+          %li 
+            = link_to '1-800-FED-INFO', 'http://www.usa.gov/About/FEDINFO.shtml', class: "white-left-border"
           
   = yield
   = javascript_include_tag "application"
