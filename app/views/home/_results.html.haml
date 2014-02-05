@@ -1,3 +1,5 @@
+%p#skip-target-holder
+  = link_to "skip-target", "#skip-target", class: "skip", id: "skip-target", tabindex: "-1"
 %div{ class: 'section-container tabs', data: { section: 'tabs' } }
   = render partial: 'home/results/fdic'
   = render partial: 'home/results/pbgc'
