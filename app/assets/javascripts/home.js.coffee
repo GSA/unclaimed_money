@@ -34,8 +34,10 @@ jQuery ->
     onlyTagList: true
   });
 
-  $('#skip-link').click ->
-    $('#skip-target').focus();
+  $('#skip-link').click (e) ->
+    e.preventDefault()
+    $('#skip-target').focus()
+    return
   $('#skip-link').focus ->
     $('#header').addClass('move-header')
   $('#skip-link').on 'blur', ->
@@ -43,6 +45,10 @@ jQuery ->
 
   $ ->
     $("#sidebar-accordion").accordion()
+    return
+
+  $ ->
+    $("#tabs").tabs()
     return
 
 
