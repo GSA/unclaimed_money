@@ -41,6 +41,10 @@ jQuery ->
   $('#skip-link').on 'blur', ->
     $('#header').removeClass('move-header')
 
+  $ ->
+    $("#sidebar-accordion").accordion()
+    return
+
 
 jQuery ->
   hash = window.location.hash
