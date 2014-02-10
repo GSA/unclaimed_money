@@ -2,15 +2,15 @@
   = link_to "skip-target", "#skip-target", class: "skip", id: "skip-target", tabindex: "-1"
 %div#tabs
   %ul
-    %li
+    %li.tabLink
       = link_to "FDIC (#{@fdic_search[:total]})", "#tab1"
       %span.hiddenText
         Tab
-    %li
+    %li.tabLink
       = link_to "PBGC (#{@pbgc_search[:total]})", "#tab2"
       %span.hiddenText
         Tab
-    %li
+    %li.tabLink
       = link_to "HUD (#{@hud_search[:total]})", "#tab3"
       %span.hiddenText
         Tab

@@ -10,11 +10,12 @@ span.hiddenText{
 	left: -200em;
 }
 
-.accordionTitle:focus{
-	outline:#edb864 solid 3px;
-	position:relative;
-	z-index:1000;
+li.tabLink:focus, .accordionTitle:focus{
+outline:#edb864 solid 3px;
+position:relative;
+z-index:1000;
 }
+
 
 .move-header{
 	left: -200%;
