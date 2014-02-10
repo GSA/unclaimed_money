@@ -4,10 +4,16 @@
   %ul
     %li
       = link_to "FDIC (#{@fdic_search[:total]})", "#tab1"
+      %span.hiddenText
+        Tab
     %li
       = link_to "PBGC (#{@pbgc_search[:total]})", "#tab2"
+      %span.hiddenText
+        Tab
     %li
       = link_to "HUD (#{@hud_search[:total]})", "#tab3"
+      %span.hiddenText
+        Tab
   %div#tab1
     = render partial: 'home/results/fdic'
   %div#tab2
