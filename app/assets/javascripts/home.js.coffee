@@ -35,8 +35,7 @@ jQuery ->
   });
 
   $('#skip-link').click (e) ->
-    e.preventDefault()
-    $('#skip-target').focus()
+    $('#skip-target-holder').focus()
     return
   $('#skip-link').focus ->
     $('#header').addClass('move-header')
