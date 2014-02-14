@@ -218,12 +218,10 @@ textarea:focus{
     position:relative;
     z-index:1000;
 }
-@media only screen and (min-width: 940px){
   .top-bar-section li a {
     padding: 0 15px 0 15px;
     background: #e6e6e6;
   }
-}
 @media only screen and (max-width: 940px) {
   .top-bar-section li a { 
     background:none;
