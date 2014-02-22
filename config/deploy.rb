@@ -1,7 +1,7 @@
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require './config/boot'
-set :stages, %w(development staging production)
+set :stages, %w(development cgi-deployment staging production)
 set :default_stage, "development"
 
 set :web_user, nil
