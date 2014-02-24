@@ -1,3 +1,12 @@
+require "rvm/capistrano"
+set :rvm_ruby_string, 'ruby-1.9.3-p484@unclaimed_money'
+set :rvm_type, :system                   # Defaults to: :auto
+set :bundle_cmd, "/usr/local/rvm/gems/ruby-1.9.3-p484@global/bin/bundle"
+set :bundle_dir, ''
+set :bundle_flags, '--system --quiet'
+#set :bundle_dir, "/usr/local/rvm/gems/ruby-1.9.3-p484"
+#set :rvm_ruby_version, '1.9.3-p484'      # Defaults to: 'default'
+
 # Use this if you're stuck behind a draconian VPN
 set :use_sudo, true
 set(:real_revision) { source.query_revision( revision ) { |cmd| capture(cmd) } }
