@@ -43,8 +43,9 @@ jQuery ->
     $('#header').removeClass('move-header')
 
   $ ->
-    $("#sidebar-accordion").accordion()
-    return
+    $("#sidebar-accordion").accordion heightStyle: "content"
+  return
+
 
   $ ->
     $("#tabs").tabs()
