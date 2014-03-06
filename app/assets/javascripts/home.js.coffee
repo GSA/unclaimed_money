@@ -44,8 +44,7 @@ jQuery ->
 
   $ ->
     $("#sidebar-accordion").accordion heightStyle: "content"
-  return
-
+    return
 
   $ ->
     $("#tabs").tabs()
