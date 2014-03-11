@@ -31,6 +31,8 @@ before 'deploy', 'deploy:take_control'
 after 'deploy', 'deploy:relinquish_control'
 # before "deploy:update_code", "deploy:web:disable"
 # after "deploy", "deploy:web:enable"
+before "deploy:update_git_repo_location", "deploy:take_control"
+after "deploy:update_git_repo_location", "deploy:relinquish_control"
 
 namespace :deploy do
   task :take_control do
