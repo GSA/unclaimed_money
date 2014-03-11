@@ -1,29 +1,29 @@
-- unless @ca_search.nil?
+- unless @ca_search.try(:results).nil?
   %section#ca
     %p.title{ data: { 'section-title' => true } }
       = link_to "California (#{@ca_search.total})", "#"
     %div.content.clear{ data: { 'section-content' => true } }
-      %table.large-12
+      %table.large-12{:summary => "California Unclaimed Money Search Results. First row contains column headers, subsequent rows contain claim information"}
         %thead
           %tr
-            %th
+            %th{:scope =>"col"}
               Name
-            %th
+            %th{:scope =>"col"}
               Address
-            %th
+            %th{:scope =>"col"}
               ID Number
-            %th
+            %th{:scope =>"col"}
               Type
             %th
         %tbody
           - @ca_search.results.each_with_index do |result, index|
-            %tr
+            %tr{:scope => "row"}
               %td= result[:name]
               %td= result[:address]
               %td= result[:id]
               %td= ca_result_type(result[:type])
               %td
-                = link_to 'Claim', '#', :class => 'small button', 'data-reveal-id' => "ca-modal-#{index}"
+                = link_to 'Claim', '#', :class => 'small button underline', 'data-reveal-id' => "ca-modal-#{index}"
                 %div.reveal-modal.expand{ id: "ca-modal-#{index}" }
                   - if flash["ca-modal-#{index}"] && flash[:success]
                     %div.alert-box.success #{flash[:success]}
@@ -34,7 +34,7 @@
                     %li 
                       Write down your Property ID Number 
                       %span.label #{result[:id]}
-                      and print the #{link_to 'Property Details', result[:href], target: '_blank'} screen for your records.
+                      and print the #{link_to 'Property Details', result[:href], target: '_blank', class: 'underline'} screen for your records.
                     %li Fill out a Claim Affirmation Form online or call (800) 992-4647 to have a representative mail the form to you.
                     %li
                       Mail the completed and signed Claim Affirmation Form along with the required documents to:
@@ -49,6 +49,6 @@
                           %span.zip 94250-5873
                     %li Due to the large volume of claims, it may take up to 180 days to process your claim. You may check the status of your claim at any time on the #{link_to 'Claims Status Page', 'https://scoweb.sco.ca.gov/UCP/ClaimStatusSearch.aspx'}.  If you have an outstanding debt with a California state agency, city or county, your unclaimed property payment may be intercepted to pay the debt. Thank you for your patience.                      
                     = link_to raw('&#215;'), "#", class: "close-reveal-modal"
-      %div.bottom_buttons
+      %div.bottom-buttons
         = button_to 'Search Again', root_path, :class => 'button positive radius right'
         = button_to 'More Results', 'https://scoweb.sco.ca.gov/UCP/', :class => 'button positive radius' if @ca_search.total == 25

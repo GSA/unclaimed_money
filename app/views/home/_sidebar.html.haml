@@ -1,26 +1,51 @@
 .large-4.columns.sidebar
-  %h4 Help &amp; FAQs
-  %div.section-container.accordion{ 'data-section' => "accordion" }
-    %section
-      %p.lead.title{ 'data-section-title' => nil}
-        = link_to 'What is unclaimed money?', "#"
-      %div.content{ 'data-section-content' => nil}
-        %p
-          Each year millions of dollars in unclaimed funds and property are turned over to the government by companies who cannot locate the owners.  If your name is on this list, you could have money waiting for you right now.
-        %p
-          = link_to 'More frequently asked questions.', ''
-    %section
-      %p.lead.title{ 'data-section-title' => nil }
-        = link_to 'How do I get started?', "#"
-      %div.content{ 'data-section-content' => nil}
-        %p
-          Each year millions of dollars in unclaimed funds and property are turned over to the government by companies who cannot locate the owners.  If your name is on this list, you could have money waiting for you right now.
-        %p 
-          = link_to 'More frequently asked questions.', ''
-    %section
-      %p.lead.title{ 'data-section-title' => nil }
-        = link_to 'What is MyUSA?', "#"
-      %div.content{ 'data-section-content' => nil}
-        %p
-          Each year millions of dollars in unclaimed funds and property are turned over to the government by companies who cannot locate the owners.  If your name is on this list, you could have money waiting for you right now.
-          = link_to 'More frequently asked questions.', ''
+  %h2 Help &amp; FAQs
+  %div#sidebar-accordion
+    %h3.accordionTitle
+      What is unclaimed money?
+    %div.sideBarText
+      %p
+        If the government owes you money and you do not collect it, then it’s unclaimed. This can also happen with banks, credit unions, pensions, and other sources. Beware of unclaimed money scams. There are people who pretend to be the government and offer to send you unclaimed money for a fee. Government agencies will not call you about unclaimed money or assets.
+        = link_to 'Learn how to spot these types of scams.', 'http://www.google.com/url?q=http%3A%2F%2Fwww.consumer.ftc.gov%2Farticles%2F0048-government-imposter-scams&sa=D&sntz=1&usg=AFQjCNEZ9VVrZAnOrtNzLqEO43IEUmYUmQ', html_options = {:class => "underline"}
+
+    %h3.accordionTitle
+      How do I use this tool?
+    %div.sideBarText
+      %p
+        Enter your last name or the name of your business the search box to search for unclaimed money from the federal government.  We’ll search for funds in your name from:
+      %ul.sideBarUL
+        %li
+          bank failures (via the 
+          = link_to 'Federal Deposit Insurance Corporation', 'http://www.google.com/url?q=http%3A%2F%2Fwww2.fdic.gov%2Ffunds%2Findex.asp&sa=D&sntz=1&usg=AFQjCNGyphC9pAu2r1AoZ8sfxL-S62PbgQ', html_options = {:class => "underline"}
+          )
+        %li
+          pensions from former employers (via the
+          = link_to 'Pension Benefit Guaranty Corporation', 'http://search.pbgc.gov/mp/', html_options = {:class => "underline"}
+          )
+        %li
+          refunds on an FHA-insured mortgage (via the
+          = link_to 'Department of Housing and Urban Development', 'http://www.hud.gov/offices/hsg/comp/refunds/', html_options = {:class => "underline"}
+          )
+      %p
+        If there is unclaimed money in your name, click on the search result for more information about filing a claim.
+    %h3.accordionTitle
+      Are there other ways to search?
+    %div.sideBarText
+      %p
+        Yes.  To search more federal, international, and state databases, please visit the USA.gov 
+        = link_to 'Unclaimed Money', 'http://www.usa.gov/Citizen/Topics/Government-Unclaimed-Money.shtml', html_options = {:class => "underline"}
+        page.
+    %h3.accordionTitle
+      I am getting an error message.
+    %div.sideBarText
+      %p
+        The Unclaimed Money app is currently in beta, which means it’s not final and is available to a limited audience only.  We ask for your help identifying problems and in making improvements.  Please 
+        = link_to 'contact us', 'http://www.usa.gov/Contact-Us.shtml', html_options = {:class => "underline"}
+        if you receive an error message or if you have suggestions for improvements.
+    %h3.accordionTitle
+      Is my information safe?
+    %div.sideBarText
+      %p
+        USA.gov does not collect or store your name or any personally identifiable information, and your privacy and security are important to us.  Please see the  
+        = link_to 'USA.gov Privacy and Security policy', 'http://www.usa.gov/About/Privacy-Security.shtml ', html_options = {:class => "underline"}
+        for more information.

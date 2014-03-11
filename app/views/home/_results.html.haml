@@ -1,6 +1,22 @@
-%div{ class: 'section-container tabs', data: { section: 'tabs' } }
-  = render partial: 'home/results/fdic'
-  = render partial: 'home/results/pbgc'
-  = render partial: 'home/results/hud'
-  = render partial: 'home/results/ca'
-  = render partial: 'home/results/md'
+%p#skip-target-holder
+  = link_to "skip-target", "#skip-target", class: "skip", id: "skip-target", tabindex: "-1"
+%div#tabs
+  %ul
+    %li.tabLink
+      = link_to "FDIC (#{@fdic_search[:total]})", "#tab1"
+      %span.hiddenText
+        Tab
+    %li.tabLink
+      = link_to "PBGC (#{@pbgc_search[:total]})", "#tab2"
+      %span.hiddenText
+        Tab
+    %li.tabLink
+      = link_to "HUD (#{@hud_search[:total]})", "#tab3"
+      %span.hiddenText
+        Tab
+  %div#tab1
+    = render partial: 'home/results/fdic'
+  %div#tab2
+    = render partial: 'home/results/pbgc'
+  %div#tab3
+    = render partial: 'home/results/hud'

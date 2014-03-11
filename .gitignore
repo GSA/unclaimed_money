@@ -20,8 +20,6 @@ Guardfile
 # folders
 config/*.yml
 config/database.yml
-config/deploy.rb
-config/deploy
 config/initializers/myusa.rb
 coverage
 db/*.sqlite3

@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.14'
+gem 'rails', '3.2.16'
 
 gem 'capistrano'
 gem 'capybara'
-gem 'capybara-webkit'
+gem 'phantomjs'
+gem 'poltergeist'
 gem 'json', '1.7.7'
 gem 'haml-rails'
 gem 'httparty'
@@ -14,6 +15,11 @@ gem 'omniauth-myusa', :git => 'https://github.com/GSA-OCSIT/omniauth-myusa.git'
 gem 'nokogiri'
 gem 'rvm-capistrano'
 gem 'secure_headers'
+
+group :amazon do
+  gem 'therubyracer'
+  gem 'minitest'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -48,19 +54,15 @@ group :development do
   gem 'guard-livereload'
   gem 'hpricot'
   gem 'meta_request'
-  gem 'mysql2'
-  gem 'quiet_assets'
   gem 'ruby_parser'
   gem 'thin'
 end
 
 group :production do
   gem 'headless'
-  gem 'sqlite3'
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda'
   gem 'simplecov', :require => false

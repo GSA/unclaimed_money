@@ -33,9 +33,23 @@ jQuery ->
     blinkBGColor_2: '#CDE69C',
     onlyTagList: true
   });
-  $( "input.tm-input" ).autocomplete({
-       source:  getStates()
-  });
+
+  $('#skip-link').click (e) ->
+    $('#skip-target-holder').focus()
+    return
+  $('#skip-link').focus ->
+    $('#header').addClass('move-header')
+  $('#skip-link').on 'blur', ->
+    $('#header').removeClass('move-header')
+
+  $ ->
+    $("#sidebar-accordion").accordion heightStyle: "content"
+    return
+
+  $ ->
+    $("#tabs").tabs()
+    return
+
 
 jQuery ->
   hash = window.location.hash

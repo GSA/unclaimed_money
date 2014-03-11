@@ -4,6 +4,75 @@
 
 @import url(http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911);
 
+.sideBarUL{
+	margin-left: 30px;
+}
+
+.sideBarText{
+font-size: 70%
+}
+
+span.hiddenText{
+	position: absolute;
+	top: -20em;
+	left: -200em;
+}
+
+li.tabLink:focus, .accordionTitle:focus{
+outline:#edb864 solid 3px;
+position:relative;
+z-index:1000;
+}
+
+
+.move-header{
+	left: -200%;
+	position: absolute;
+}
+
+#skip-target-holder{
+	left: -200%;
+	position: absolute;
+}
+
+.skip-link-holder a {
+	display: block;
+	position: absolute;
+	left: -200%;
+	top: 0;
+	width: 99%;
+	z-index: 2;
+	border-bottom-color: #CCCCCC;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	padding: 5px;
+	text-align: center;
+	text-decoration: underline;
+	font-size: 160%;
+	color: #FFF;
+	background-color: #022945
+ }
+
+ .skip-link-holder a:focus, .skip-link-holder a:active {
+		left: 0;
+		z-index: 100;
+		height: 40px;
+		margin-bottom: 1.6em;
+ }
+
+.white-left-border{
+	border-left: 1px solid white;
+}
+
+.grey-right-border{
+	border-right: 1px solid #cdcdcd;
+}
+
+.underline{
+	text-decoration:underline;
+}
+
+
 h1 { font-family: 'Goudy Bookletter 1911', serif; font-weight: normal; 
   a { color:#122237; }
 }
@@ -11,8 +80,8 @@ $tooltip-pip-size: 0px;
 
 hr.red-stripe { border-color:#921B1E; border-width: 6px 0 0 0; margin:0; }
 
-a img#usa_gov_logo { height:38px; padding:2px 16px 0; position:relative; z-index:10; }
-a.usa_logo {
+a img#usa-gov-logo { height:38px; padding:2px 16px 0; position:relative; z-index:10; }
+a.usa-logo {
   height:45px;
   /* IE10 Consumer Preview */ 
   background-image: -ms-linear-gradient(top, #FFFFFF 0%, #e6e6e6 100%);
@@ -28,17 +97,17 @@ a.usa_logo {
   background-image: linear-gradient(to bottom, #FFFFFF 0%, #e6e6e6 100%);  
 }
 
-#log_in_link { background-color:#112136; border-right: 6px solid #1d6484; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
+#log-in-link { background-color:#112136; border-right: 6px solid #1d6484; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
   img { height:52px; position:absolute; left:-19px; top:-6px; }
   span { font-weight: normal; }
 }
-#log_in_link:hover { background-color:#1d6484; border-right:6px solid #112136; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
+#log-in-link:hover { background-color:#1d6484; border-right:6px solid #112136; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
   img { height:52px; position:absolute; left:-19px; top:-6px; }
   span { font-weight: normal; }
 }
 
-#log_in_link span:after { content: ' with ';}
-#log_in_link strong:after { content: 'MyUSA';}
+#log-in-link span:after { content: ' with ';}
+#log-in-link strong:after { content: 'MyUSA';}
 
 
 .top-bar .toggle-topbar.menu-icon { padding-right:20px;
@@ -103,7 +172,7 @@ div.alert-box { background-color:#d9edf7; border:1px solid #bce8f1; color:#3a87a
     height: 15px;
     width: 100%;
     overflow: hidden;
-    background-image: image-url('progress_bar_animation.gif') repeat-x;
+    background-image: image-url('progress-bar-animation.gif') repeat-x;
     -moz-opacity: 0.25;
     -khtml-opacity: 0.25;
     opacity: 0.25;
@@ -136,16 +205,40 @@ div.alert-box { background-color:#d9edf7; border:1px solid #bce8f1; color:#3a87a
     to { width: 100% }
 }
 
-.bottom_buttons { height:43px; }
+.bottom-buttons { height:43px; }
 
+a:focus, input:focus, button:focus,
+input[type="text"]:focus,
+input[type="password"]:focus, 
+input[type="date"]:focus, 
+input[type="datetime"]:focus, 
+input[type="datetime-local"]:focus, 
+input[type="month"]:focus, 
+input[type="week"]:focus, 
+input[type="email"]:focus, 
+input[type="number"]:focus, 
+input[type="search"]:focus, 
+input[type="tel"]:focus, 
+input[type="time"]:focus, 
+input[type="url"]:focus, 
+textarea:focus{
+    outline:#edb864 solid 3px;
+    position:relative;
+    z-index:1000;
+}
+.top-bar-section ul li a {
+  padding: 0 15px 0 15px;
+  line-height: 45px;
+  background: #e6e6e6;
+}
 @media only screen and (max-width: 940px) {
-  .top-bar-section li a:not(.button) { 
+  .top-bar-section li a { 
     background:none;
     background-color: #e6e6e6;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  #log_in_link span:after { content: none;}
-  #log_in_link strong:after { content: none;}
+  #log-in-link span:after { content: none;}
+  #log-in-link strong:after { content: none;}
 }
