@@ -47,4 +47,8 @@ namespace :deploy do
     run "ln -nfs #{deploy_to}/shared/config/*.yml #{release_path}/config/"
     run "ln -nfs #{deploy_to}/shared/config/initializers/myusa.rb #{release_path}/config/initializers/myusa.rb"
   end
+
+  task :update_git_repo_location do
+    run "if [ -d #{shared_path}/cached-copy ]; then cd #{shared_path}/cached-copy && git remote set-url origin #{repository}; else true; fi"
+  end
 end
