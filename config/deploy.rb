@@ -7,7 +7,7 @@ set :default_stage, "development"
 set :web_user, nil
 set :application, "unclaimed-money"
 set :scm, "git"
-set :repository, "git@github.com:mobomo/unclaimed_money.git"
+set :repository, "https://github.com/GSA/unclaimed_money.git"
 
 set :use_sudo, false
 set :deploy_via, :remote_cache
