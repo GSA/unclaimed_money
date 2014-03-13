@@ -16,6 +16,7 @@
 //= require foundation
 //= require bootstrap-tagmanager
 //= require_tree .
+//= require analytics
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
