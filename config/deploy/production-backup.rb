@@ -17,10 +17,10 @@ set :web_group, "apache"
 set :deploy_to, "/var/www/#{application}"
 set :rails_env, :staging
 
-# Philadelphia (Primary) Data Center
-role :web, "172.22.73.89"     # Your HTTP server, Apache/etc
-role :app, "172.22.73.89"     # This may be the same as your `Web` server
-role :db,  "172.22.73.89", :primary => true   # This is where Rails migrations will run
+# Phoenix (Backup) Data Center
+role :web, "172.23.73.89"     # Your HTTP server, Apache/etc
+role :app, "172.23.73.89"     # This may be the same as your `Web` server
+role :db,  "172.23.73.89", :primary => true   # This is where Rails migrations will run
 
 set :branch, ENV['BRANCH'] || 'master'
 
