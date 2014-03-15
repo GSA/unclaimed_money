@@ -14,6 +14,7 @@ set :deploy_via, :remote_cache
 
 before 'deploy:assets:precompile', 'deploy:symlink_files'
 after "deploy:restart", "deploy:cleanup"
+after "deploy:setup", "deploy:add_shared_config"
 
 
 desc "Shows the date/time and commit revision of when the code was most recently deployed for a server"
@@ -39,7 +40,12 @@ namespace :deploy do
 
   desc "Add config dir to shared folder"
   task :add_shared_config do
-    run "mkdir -p #{deploy_to}/shared/config"
+    sudo "mkdir -p #{deploy_to}/shared/config/initializers", :as => web_user
+  end
+
+  desc "Upload config file"
+  task :upload_config_file do
+    top.upload('config/initializers/myusa.rb', "#{deploy_to}/shared/config/initializers/myusa.rb", :via => :scp)
   end
 
   desc "Symlink files"

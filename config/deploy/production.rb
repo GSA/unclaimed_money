@@ -5,8 +5,6 @@ set :rvm_type, :system                   # Defaults to: :auto
 set :bundle_cmd, "/usr/local/rvm/gems/ruby-1.9.3-p484@global/bin/bundle"
 set :bundle_dir, ''
 set :bundle_flags, '--system --quiet'
-#set :bundle_dir, "/usr/local/rvm/gems/ruby-1.9.3-p484"
-#set :rvm_ruby_version, '1.9.3-p484'      # Defaults to: 'default'
 
 # Use this if you're stuck behind a draconian VPN
 set :use_sudo, true
@@ -25,17 +23,16 @@ role :db,  "172.22.73.89", :primary => true   # This is where Rails migrations w
 set :branch, ENV['BRANCH'] || 'master'
 
 
+before 'deploy:upload_config_file', 'deploy:take_control'
+after 'deploy:upload_config_file', 'deploy:relinquish_control'
 before 'deploy', 'deploy:take_control'
-#before 'deploy:symlink_db', 'deploy:delete_rvmrc'
-#before 'deploy:assets:precompile', 'deploy:symlink_config_for_staging'
-#before 'deploy', 'deploy:set_up_rvm'
 after 'deploy', 'deploy:relinquish_control'
 # before "deploy:update_code", "deploy:web:disable"
 # after "deploy", "deploy:web:enable"
 before "deploy:update_git_repo_location", "deploy:take_control"
 after "deploy:update_git_repo_location", "deploy:relinquish_control"
-before "deploy:set_up_rvm", "deploy:take_control"
-after "deploy:set_up_rvm", "deploy:relinquish_control"
+before "deploy:setup", "rvm:create_gemset"
+after "deploy:setup", "deploy:set_up_rvm"
 
 namespace :deploy do
   task :take_control do
@@ -57,7 +54,6 @@ namespace :deploy do
   end
 
   task :set_up_rvm, :roles => :app do
-    rvm.create_gemset
     sudo "chown -R #{web_user} /usr/local/rvm/gems/#{rvm_ruby_string}", :pty => true
   end
 end
