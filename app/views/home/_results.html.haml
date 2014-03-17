@@ -3,15 +3,15 @@
 %div#tabs
   %ul
     %li.tabLink
-      = link_to "FDIC (#{@fdic_search[:total]})", "#tab1"
+      = link_to "FDIC (#{@fdic_search[:total]})", "#tab1", :class => 'tabLinkText'
       %span.hiddenText
         Tab
     %li.tabLink
-      = link_to "PBGC (#{@pbgc_search[:total]})", "#tab2"
+      = link_to "PBGC (#{@pbgc_search[:total]})", "#tab2", :class => 'tabLinkText'
       %span.hiddenText
         Tab
     %li.tabLink
-      = link_to "HUD (#{@hud_search[:total]})", "#tab3"
+      = link_to "HUD (#{@hud_search[:total]})", "#tab3", :class => 'tabLinkText'
       %span.hiddenText
         Tab
   %div#tab1

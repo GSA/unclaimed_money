@@ -4,6 +4,19 @@
 
 @import url(http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911);
 
+
+.navLinkText{
+	color: #454545 !important;
+}
+
+.alertText{
+	color: #444444;
+}
+
+.claimLink{
+	background: #8CB3D9;
+}
+
 .sideBarUL{
 	margin-left: 30px;
 }
@@ -16,6 +29,18 @@ span.hiddenText{
 	position: absolute;
 	top: -20em;
 	left: -200em;
+}
+
+.accordionTitle{
+	color: #444444 !important;
+}
+
+.accordionTitle:hover {
+ color: #222222
+}
+
+.tabLinkText{
+	color: #444444 !important;
 }
 
 li.tabLink:focus, .accordionTitle:focus{

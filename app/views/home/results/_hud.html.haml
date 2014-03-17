@@ -22,7 +22,7 @@
             %td= result[:claim_date]
             %td= result[:case_number]
             %td
-              = link_to 'Claim', '#', :class => 'small button underline', 'data-reveal-id' => "hud-modal-#{index}"
+              = link_to 'Claim', '#', :class => 'small button underline claimLink', 'data-reveal-id' => "hud-modal-#{index}"
               %div.reveal-modal.expand{ id: "hud-modal-#{index}" }
                 - if flash["hud-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}

@@ -33,18 +33,18 @@
         %ul.left
           - if current_page?("/")
             %li.active
-              = link_to 'Home', root_url, class: "grey-right-border"
+              = link_to 'Home', root_url, class: "grey-right-border navLinkText"
           - else
             %li
-              = link_to 'Home', root_url, class: "grey-right-border"
+              = link_to 'Home', root_url, class: "grey-right-border navLinkText"
           %li 
-            = link_to 'Site Index', 'http://www.usa.gov/site-index.shtml', class: "grey-right-border white-left-border"
+            = link_to 'Site Index', 'http://www.usa.gov/site-index.shtml', class: "grey-right-border white-left-border navLinkText"
           %li 
-            = link_to 'Chat', 'http://answers.usa.gov/system/templates/selfservice/USAGov/#portal/1012/chat', class: "grey-right-border white-left-border"
+            = link_to 'Chat', 'http://answers.usa.gov/system/templates/selfservice/USAGov/#portal/1012/chat', class: "grey-right-border white-left-border navLinkText"
           %li 
-            = link_to 'Contact Us', 'http://www.usa.gov/Contact-Us.shtml', class: "grey-right-border white-left-border"
+            = link_to 'Contact Us', 'http://www.usa.gov/Contact-Us.shtml', class: "grey-right-border white-left-border navLinkText"
           %li 
-            = link_to '1-800-FED-INFO', 'http://www.usa.gov/About/FEDINFO.shtml', class: "white-left-border"
+            = link_to '1-800-FED-INFO', 'http://www.usa.gov/About/FEDINFO.shtml', class: "white-left-border navLinkText"
           
   = yield
   = javascript_include_tag "application"

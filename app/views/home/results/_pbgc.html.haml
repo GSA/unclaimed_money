@@ -19,7 +19,7 @@
             %td= result[:company]
             %td= result[:last_known_address]
             %td
-              = link_to 'Claim', '#', :class => 'small button underline', 'data-reveal-id' => "pbgc-modal-#{index}"
+              = link_to 'Claim', '#', :class => 'small button underline claimLink', 'data-reveal-id' => "pbgc-modal-#{index}"
               %div.reveal-modal.expand{ id: "pbgc-modal-#{index}" }
                 - if flash["pbgc-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
