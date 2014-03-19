@@ -40,7 +40,10 @@ namespace :deploy do
 
   desc "Add config dir to shared folder"
   task :add_shared_config do
-    sudo "mkdir -p #{deploy_to}/shared/config/initializers", :as => web_user
+    sudo "mkdir -p #{deploy_to}/shared/config/initializers"
+    sudo "touch #{deploy_to}/shared/log/.gitkeep"
+    top.upload('config/initializers/myusa.rb.example', "/tmp/myusa.rb", :via => :scp)
+    sudo "mv /tmp/myusa.rb #{deploy_to}/shared/config/initializers/myusa.rb"
   end
 
   desc "Upload config file"
