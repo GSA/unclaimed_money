@@ -50,7 +50,7 @@ jQuery ->
     $("#tabs").tabs()
     return
 
-  $('#claim-link').click  ->
+  $('.claimLink').click  ->
     $(this).blur()
     $('.close-reveal-modal').attr("tabindex", 1)
 

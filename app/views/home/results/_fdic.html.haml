@@ -31,7 +31,7 @@
             %td= result[:check_date]
             %td= result[:check_number]
             %td
-              = link_to 'Claim', '#', :class => 'small button underline claimLink', :id => 'claim-link', 'data-reveal-id' => "fdic-modal-#{index}"
+              = link_to 'Claim', '#', :class => 'small button underline claimLink', 'data-reveal-id' => "fdic-modal-#{index}"
               %div.reveal-modal.expand{ id: "fdic-modal-#{index}" }
                 - if flash["fdic-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
