@@ -1,0 +1,26 @@
+%div.footer
+  %p
+    %b Don't see your name in the search results?
+  %p
+    This app displays the top 25 search results and does not cover all possible sources of unclaimed money. It’s possible you are owed money even if your name doesn’t appear in this list.  Here are some options:
+  %ul
+    %li.searchHelpList 
+      Explore more results by searching directly at the 
+      = link_to 'Federal Deposit Insurance Corporation', 'http://www2.fdic.gov/funds/index.asp', :class => 'underline'
+    %li.searchHelpList
+      Explore more results by searching directly at the 
+      = link_to 'Department of Housing and Urban Development', 'http://www.hud.gov/offices/hsg/comp/refunds/', :class => 'underline'
+    %li.searchHelpList
+      Explore more results by searching directly at the 
+      = link_to 'Pension Benefit Guaranty Corporation', 'http://search.pbgc.gov/mp/', :class => 'underline'
+    %li.searchHelpList
+      Search 
+      = link_to 'other sources of unclaimed money', 'http://www.usa.gov/Citizen/Topics/Government-Unclaimed-Money.shtml', :class => 'underline'
+  %p
+    %b Still not seeing your name?
+  %ul
+    %li.searchHelpList You may not be entitled to any unclaimed money from the government
+    %li.searchHelpList You may want to search again later or use a different search term (for example, last name only)
+   
+  %div.bottom-buttons
+    = button_to 'Search Again', root_path, :class => 'button positive radius'

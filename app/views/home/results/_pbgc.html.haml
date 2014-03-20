@@ -33,6 +33,4 @@
                   Call PBGC toll-free at 1-800-326-LOST. (TTY/TDD users, call the federal relay service toll-free at 1-800-877-8339 and ask to be connected to 1-800-326-LOST) or fill out the #{link_to 'secure form', result[:claim_url], class: 'underline'} and provide the information about the missing participant or beneficiary.
                   %strong Be sure to provide us with a valid telephone number, e-mail address, or mailing address. They need some way to contact you, and any one of those items are suitable. Without that information, we are unable to help the person who may be owed money.
                 %p.lead PBGC will contact you shortly after they receive the information.
-    %div.bottom-buttons
-      = button_to 'Search Again', root_path, :class => 'button positive radius right'
-      = button_to 'Search More', 'http://www.usa.gov/Citizen/Topics/Government-Unclaimed-Money.shtml', :class => 'button positive radius'
+    = render partial: 'home/results/footer'
