@@ -26,7 +26,7 @@
               %div.reveal-modal.expand{ id: "hud-modal-#{index}" }
                 - if flash["hud-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
-                = link_to raw('&#215;'), "#", class: "close-reveal-modal"
+                = link_to raw('&#215;'), "#", class: "close-reveal-modal", tabindex: "1"
                 %br
                 - if session[:user] != {}
                   = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "hud-modal-#{index}", task_type: 'hud', uid: result[:case_number]), :class => 'button positive radius right'

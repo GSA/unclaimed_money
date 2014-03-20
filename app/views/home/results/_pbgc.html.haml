@@ -23,7 +23,7 @@
               %div.reveal-modal.expand{ id: "pbgc-modal-#{index}" }
                 - if flash["pbgc-modal-#{index}"] && flash[:success]
                   %div.alert-box.success #{flash[:success]}
-                = link_to raw('&#215;'), "#", class: "close-reveal-modal"
+                = link_to raw('&#215;'), "#", class: "close-reveal-modal", tabindex: "1"
                 %br
                 - if session[:user] != {}
                   = button_to 'Save to MyUSA Tasks', add_tasks_path(modal: "pbgc-modal-#{index}", task_type: 'pbgc', url: result[:claim_url]), :class => 'button positive radius right'
