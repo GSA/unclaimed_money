@@ -17,6 +17,7 @@
 //= require bootstrap-tagmanager
 //= require_tree .
 //= require analytics
+//= require crazyEgg
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
