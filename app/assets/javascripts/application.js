@@ -18,6 +18,7 @@
 //= require_tree .
 //= require analytics
 //= require crazyEgg
+//= require iperceptions
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
