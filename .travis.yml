@@ -14,5 +14,4 @@ notifications:
 script: 
   - bundle exec rake spec
 rvm:
-  - 2.0.0
   - 1.9.3
