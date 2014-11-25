@@ -8,6 +8,8 @@ set :web_user, nil
 set :application, "unclaimed-money"
 set :scm, "git"
 set :repository, "https://github.com/GSA/unclaimed_money.git"
+set :rvm_ruby_string, release_path
+set :rvm_type, :system
 
 set :use_sudo, false
 set :deploy_via, :remote_cache
