@@ -11,7 +11,7 @@ gem 'haml-rails'
 gem 'httparty'
 gem 'Indirizzo'
 gem 'jquery-rails'
-gem 'omniauth-myusa', :git => 'https://github.com/GSA-OCSIT/omniauth-myusa.git'
+gem 'omniauth-myusa', git: 'https://github.com/18F/omniauth-myusa.git'
 gem 'nokogiri'
 gem 'rvm-capistrano'
 gem 'secure_headers'
@@ -34,7 +34,7 @@ end
 
 group :development, :test do
   gem 'awesome_print'
-  gem "brakeman", :require => false
+  gem "brakeman", require: false
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'guard'
@@ -65,6 +65,6 @@ end
 group :test do
   gem 'launchy'
   gem 'shoulda'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
   gem 'webmock'
 end
